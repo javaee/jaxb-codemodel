@@ -233,6 +233,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/annotation-compiler/annotation-compiler.iml" filepath="$PROJECT_DIR$/annotation-compiler/annotation-compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/codemodel.iml" filepath="$PROJECT_DIR$/codemodel.iml" />
     </modules>
   </component>
