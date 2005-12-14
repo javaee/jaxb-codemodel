@@ -22,6 +22,8 @@
 
 <project name="codemodel" basedir="." default="jar">
 
+  <property file="project.properties" />
+
   <target name="compile">
     <mkdir dir="target/classes"/>
     <javac srcdir="src" destdir="target/classes"
@@ -39,6 +41,9 @@
     <jar destfile="target/codemodel.jar">
       <fileset dir="target/classes" includes="**/*.class"/>
       <fileset dir="src" includes="**/*.properties"/>
+      <manifest>
+        <attribute name="Version" value="${version}"/>
+      </manifest>
     </jar>
     <zip destfile="target/codemodel-src.zip">
       <fileset dir="src"/>
@@ -47,8 +52,8 @@
 
   <target name="annotation-compiler" depends="jar"
           description="build annotation compiler">
-    <mkdir dir="target/ac-classes"/>
-    <javac srcdir="target/annotation-compiler" destdir="target/ac-classes"
+    <mkdir dir="annotation-compiler/target/classes"/>
+    <javac srcdir="annotation-compiler/src" destdir="annotation-compiler/target/classes"
            debug="true" optimize="true">
       <classpath>
         <pathelement path="target/classes"/>
@@ -56,9 +61,10 @@
       </classpath>
     </javac>
     <jar destfile="target/codemodel-annotation-compiler.jar">
-      <fileset dir="target/ac-classes"/>
+      <fileset dir="annotation-compiler/target/classes"/>
       <manifest>
         <attribute name="Class-Path" value="codemodel.jar"/>
+        <attribute name="Version" value="${version}"/>
       </manifest>
     </jar>
   </target>
@@ -78,5 +84,6 @@
 
   <target name="clean">
     <delete dir="target"/>
+    <delete dir="annotation-compiler/target"/>
   </target>
 </project>

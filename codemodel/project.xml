@@ -3,7 +3,7 @@
   <pomVersion>3</pomVersion>
   <name>codemodel</name>
   <id>codemodel</id>
-  <currentVersion>2.0</currentVersion>
+  <currentVersion>${version}</currentVersion>
   
   <organization>
     <name>Sun Microsystems</name>
