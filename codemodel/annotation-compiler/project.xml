@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <pomVersion>3</pomVersion>
+  <extend>../project.xml</extend>
+  
+  <name>codemodel annotation compiler</name>
+  <id>codemodel-annotation-compiler</id>
+  
+  <shortDescription>compiler that generates annotation writer interfaces</shortDescription>
+  <description>compiler that generates annotation writer interfaces</description>
+  
+  <dependencies>
+    <dependency>
+      <id>ant</id>
+      <version>1.5</version>
+    </dependency>
+    <dependency>
+      <id>codemodel</id>
+      <version>${pom.currentVersion}</version>
+      <properties>
+        <jar.manifest.classpath>true</jar.manifest.classpath>
+      </properties>
+    </dependency>
+  </dependencies>
+</project>
