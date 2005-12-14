@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <pomVersion>3</pomVersion>
+  <name>codemodel</name>
+  <id>codemodel</id>
+  <currentVersion>2.0</currentVersion>
+  
+  <organization>
+    <name>Sun Microsystems</name>
+    <url>http://www.sun.com/</url>
+    <!--logo>http://today.java.net/im/logo_java.gif</logo-->
+  </organization>
+ 
+  <package>com.sun.codemodel</package>
+  
+  <shortDescription>Java source code generation library</shortDescription>
+  <description>Java source code generation library</description>
+  
+  <issueTrackingUrl>https://${maven.javanet.project}.dev.java.net/servlets/ProjectIssues</issueTrackingUrl>
+  <mailingLists>
+    <mailingList>
+      <name>Users List</name>
+      <subscribe>users-subscribe@${maven.javanet.project}.dev.java.net</subscribe>
+      <unsubscribe>users-unsubscribe@${maven.javanet.project}.dev.java.net</unsubscribe>
+      <archive>https://${maven.javanet.project}.dev.java.net/servlets/SummarizeList?listName=users</archive>
+    </mailingList>
+    <mailingList>
+      <name>Issues List</name>
+      <subscribe>issues-subscribe@${maven.javanet.project}.dev.java.net</subscribe>
+      <unsubscribe>issues-unsubscribe@${maven.javanet.project}.dev.java.net</unsubscribe>
+      <archive>https://${maven.javanet.project}.dev.java.net/servlets/SummarizeList?listName=issues</archive>
+    </mailingList>
+    <mailingList>
+      <name>CVS List</name>
+      <subscribe>cvs-subscribe@${maven.javanet.project}.dev.java.net</subscribe>
+      <unsubscribe>cvs-unsubscribe@${maven.javanet.project}.dev.java.net</unsubscribe>
+      <archive>https://${maven.javanet.project}.dev.java.net/servlets/SummarizeList?listName=cvs</archive>
+    </mailingList>
+  </mailingLists>
+
+  <developers>
+    <developer>
+      <name>Kohsuke Kawaguchi</name>
+      <id>kohsuke</id>
+      <email>kohsuke.kawaguchi@sun.com</email>
+    </developer>
+    <developer>
+      <name>Ryan Shoemaker</name>
+      <id>ryans</id>
+      <email>ryan.shoemaker@sun.com</email>
+    </developer>
+    <developer>
+      <name>Bhakti Mehta</name>
+      <id>bhakti</id>
+      <email>bhakti.mehta@sun.com</email>
+    </developer>
+  </developers>
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <!--resources>
+      <resource>
+        <directory>src</directory>
+      </resource>
+    </resources-->
+    
+    <!--unitTestSourceDirectory>test</unitTestSourceDirectory>
+    <unitTest>
+      <includes>
+        <include>**/*Test.java</include>
+      </includes>
+      <excludes>
+        <exclude>**/Abstract*TestCase.java</exclude>
+      </excludes>
+      <resources>
+        <resource>
+          <directory>src/test</directory>
+        </resource>
+      </resources>
+    </unitTest-->
+  </build>
+
+  <reports>
+    <report>maven-license-plugin</report>
+    <report>maven-changelog-plugin</report>
+    <report>maven-changes-plugin</report>
+    <report>maven-developer-activity-plugin</report>
+    <report>maven-file-activity-plugin</report>
+    <report>maven-javadoc-plugin</report>
+    <report>maven-junit-report-plugin</report>
+    <!--
+    <report>maven-jcoverage-plugin</report>
+    <report>maven-jxr-plugin</report>
+    -->
+    <report>maven-linkcheck-plugin</report>
+  </reports>
+</project>
