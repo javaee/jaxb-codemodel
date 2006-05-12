@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
   <pomVersion>3</pomVersion>
-  <name>codemodel</name>
-  <id>codemodel</id>
+  <groupId>com.sun.codemodel</groupId>
+  <artifactId>codemodel</artifactId>
   <currentVersion>${version}</currentVersion>
   
   <organization>
@@ -17,9 +17,9 @@
   <description>Java source code generation library</description>
   
   <repository>
-    <connection>scm:svn:https://guest@${maven.javanet.project}.dev.java.net/repo/${maven.javanet.project}</connection>
-    <developerConnection>scm:svn:https://${maven.javanet.project}.dev.java.net/repo/${maven.javanet.project}</developerConnection>
-    <url>https://codemodel.dev.java.net/source/browse/${maven.javanet.project}</url>
+    <connection>scm:svn:https://guest@${maven.javanet.project}.dev.java.net/svn/${maven.javanet.project}</connection>
+    <developerConnection>scm:svn:https://${maven.javanet.project}.dev.java.net/svn/${maven.javanet.project}</developerConnection>
+    <url>https://${maven.javanet.project}.dev.java.net/source/browse/${maven.javanet.project}</url>
   </repository>
   
   <issueTrackingUrl>https://${maven.javanet.project}.dev.java.net/servlets/ProjectIssues</issueTrackingUrl>
