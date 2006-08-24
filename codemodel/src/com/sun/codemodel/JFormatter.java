@@ -53,7 +53,7 @@ public final class JFormatter {
          * Print the actual source code.
          */
         PRINTING
-    };
+    }
 
     /**
      * The current running mode.
@@ -257,7 +257,10 @@ public final class JFormatter {
             if(importedClasses.contains(type)) {
                 p(type.name()); // FQCN imported or not necessary, so generate short name
             } else {
-                p(type.fullName()); // collision was detected, so generate FQCN
+                if(type.outer()!=null)
+                    t(type.outer()).p('.').p(type.name());
+                else
+                    p(type.fullName()); // collision was detected, so generate FQCN
             }
             break;
         case COLLECTING:
@@ -287,7 +290,7 @@ public final class JFormatter {
             if(collectedReferences.containsKey(id)) {
                 if( !collectedReferences.get(id).getClasses().isEmpty() ) {
                     for( JClass type : collectedReferences.get(id).getClasses() ) {
-                        if ((type instanceof JDefinedClass) && ((JDefinedClass)type).outer()!=null) {
+                        if (type.outer()!=null) {
                             collectedReferences.get(id).setId(false);
                             return this;
                         }
@@ -382,6 +385,8 @@ public final class JFormatter {
         mode = Mode.COLLECTING;
         d(c);
 
+        javaLang = c.owner()._package("java.lang");
+
         // collate type names and identifiers to determine which types can be imported
         for( ReferenceList tl : collectedReferences.values() ) {
             if(!tl.collisions(c) && !tl.isId()) {
@@ -412,7 +417,7 @@ public final class JFormatter {
             // suppress import statements for primitive types, built-in types,
             // types in the root package, and types in
             // the same package as the current type
-            if(!supressImport(clazz)) {
+            if(!supressImport(clazz, c)) {
                 p("import").p(clazz.fullName()).p(';').nl();
             }
         }
@@ -425,18 +430,30 @@ public final class JFormatter {
      * determine if an import statement should be supressed
      *
      * @param clazz JType that may or may not have an import
+     * @param c JType that is the current class being processed
      * @return true if an import statement should be suppressed, false otherwise
      */
-    private boolean supressImport(JClass clazz) {
+    private boolean supressImport(JClass clazz, JClass c) {
         if(clazz._package().isUnnamed())
             return true;
 
         final String packageName = clazz._package().name();
         if(packageName.equals("java.lang"))
             return true;    // no need to explicitly import java.lang classes
-
+    
+        if (clazz._package() == c._package()){ 
+            // inner classes require an import stmt.
+            // All other pkg local classes do not need an
+            // import stmt for ref.
+            if(clazz.outer()==null) {
+                return true;    // no need to explicitly import a class into itself
+            }
+        }
         return false;
     }
+
+    private JPackage javaLang;
+
 
 
     /**
@@ -446,78 +463,74 @@ public final class JFormatter {
      * whitespace.
      */
     /*package*/ static final char CLOSE_TYPE_ARGS = '\uFFFF';
-}
-
-/**
- * Used during the optimization of class imports.
- *
- * List of {@link JClass}es whose short name is the same.
- *
- * @author Ryan.Shoemaker@Sun.COM
- */
-final class ReferenceList {
-    private final ArrayList<JClass> classes;
-
-    /** true if this name is used as an identifier (like a variable name.) **/
-    private boolean id;
-
-    public ReferenceList() {
-        classes = new ArrayList<JClass>();
-    }
 
     /**
-     * Returns true if the symbol represented by the short name
-     * is "importable".
+     * Used during the optimization of class imports.
+     *
+     * List of {@link JClass}es whose short name is the same.
+     *
+     * @author Ryan.Shoemaker@Sun.COM
      */
-    public boolean collisions(JDefinedClass enclosingClass) {
-        // special case where a generated type collides with a type in package java
+    final class ReferenceList {
+        private final ArrayList<JClass> classes = new ArrayList<JClass>();
 
-        JPackage javaLang = enclosingClass.owner()._package("java.lang");
+        /** true if this name is used as an identifier (like a variable name.) **/
+        private boolean id;
 
-        // more than one type with the same name
-        if(classes.size() > 1)
-            return true;
+        /**
+         * Returns true if the symbol represented by the short name
+         * is "importable".
+         */
+        public boolean collisions(JDefinedClass enclosingClass) {
+            // special case where a generated type collides with a type in package java
 
-        // an id and (at least one) type with the same name
-        if(id && classes.size() != 0)
-            return true;
+            // more than one type with the same name
+            if(classes.size() > 1)
+                return true;
 
-        for(JClass c : classes) {
-            if(c._package()==javaLang) {
-                // make sure that there's no other class with this name within the same package
-                Iterator itr = enclosingClass._package().classes();
-                while(itr.hasNext()) {
-                    // even if this is the only "String" class we use,
-                    // if the class called "String" is in the same package,
-                    // we still need to import it.
-                    JDefinedClass n = (JDefinedClass)itr.next();
-                    if(n.name().equals(c.name()))
-                        return true;    //collision
+            // an id and (at least one) type with the same name
+            if(id && classes.size() != 0)
+                return true;
+
+            for(JClass c : classes) {
+                if(c._package()==javaLang) {
+                    // make sure that there's no other class with this name within the same package
+                    Iterator itr = enclosingClass._package().classes();
+                    while(itr.hasNext()) {
+                        // even if this is the only "String" class we use,
+                        // if the class called "String" is in the same package,
+                        // we still need to import it.
+                        JDefinedClass n = (JDefinedClass)itr.next();
+                        if(n.name().equals(c.name()))
+                            return true;    //collision
+                    }
                 }
+                if(c.outer()!=null)
+                    return true; // avoid importing inner class to work around 6431987. Also see jaxb issue 166
             }
+
+            return false;
         }
 
-        return false;
-    }
+        public void add(JClass clazz) {
+            if(!classes.contains(clazz))
+                classes.add(clazz);
+        }
 
-    public void add(JClass clazz) {
-        if(!classes.contains(clazz))
-            classes.add(clazz);
-    }
+        public List<JClass> getClasses() {
+            return classes;
+        }
 
-    public List<JClass> getClasses() {
-        return classes;
-    }
+        public void setId(boolean value) {
+            id = value;
+        }
 
-    public void setId(boolean value) {
-        id = value;
-    }
-
-    /**
-     * Return true iff this is strictly an id, meaning that there
-     * are no collisions with type names.
-     */
-    public boolean isId() {
-        return id && classes.size() == 0;
+        /**
+         * Return true iff this is strictly an id, meaning that there
+         * are no collisions with type names.
+         */
+        public boolean isId() {
+            return id && classes.size() == 0;
+        }
     }
 }

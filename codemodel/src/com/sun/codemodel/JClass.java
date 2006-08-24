@@ -20,11 +20,11 @@
 
 package com.sun.codemodel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Collections;
-import java.util.Arrays;
-import java.util.ArrayList;
 
 /**
  * Represents a Java reference type, such as a class, an interface,
@@ -55,6 +55,14 @@ public abstract class JClass extends JType
      * TODO: shall we move move this down?
      */
     abstract public JPackage _package();
+
+    /**
+     * Returns the class in which this class is nested, or <tt>null</tt> if
+     * this is a top-level class.
+     */
+    public JClass outer() {
+        return null;
+    }
 	
     private final JCodeModel _owner;
     /** Gets the JCodeModel object to which this object belongs. */
@@ -323,7 +331,7 @@ public abstract class JClass extends JType
 
     /** Static field reference. */
     public final JFieldRef staticRef(JVar field) {
-        return staticRef(field.name());
+        return new JFieldRef(this, field);
     }
 
     public void generate(JFormatter f) {

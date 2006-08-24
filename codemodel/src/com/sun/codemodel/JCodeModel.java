@@ -78,7 +78,7 @@ public final class JCodeModel {
     private HashMap<String,JPackage> packages = new HashMap<String,JPackage>();
     
     /** All JReferencedClasses are pooled here. */
-    private final HashMap refClasses = new HashMap();
+    private final HashMap<Class,JReferencedClass> refClasses = new HashMap<Class,JReferencedClass>();
 
     
     /** Obtains a reference to the special "null" type. */
@@ -283,6 +283,19 @@ public final class JCodeModel {
         resource.close();
     }
 
+    /**
+     * Returns the number of files to be generated if
+     * {@link #build} is invoked now.
+     */
+    public int countArtifacts() {
+        int r = 0;
+        JPackage[] pkgs = packages.values().toArray(new JPackage[packages.size()]);
+        // avoid concurrent modification exception
+        for( JPackage pkg : pkgs )
+            r += pkg.countArtifacts();
+        return r;
+    }
+
 	
     /**
      * Obtains a reference to an existing class from its Class object.
@@ -390,12 +403,31 @@ public final class JCodeModel {
         }
 
         /**
-         * Parses a type name token T (which can be potentially of the form Tr&ly;T1,T2,...>.)
+         * Parses a type name token T (which can be potentially of the form Tr&ly;T1,T2,...>,
+         * or "? extends/super T".)
          *
          * @return the index of the character next to T.
          */
         JClass parseTypeName() throws ClassNotFoundException {
             int start = idx;
+
+            if(s.charAt(idx)=='?') {
+                // wildcard
+                idx++;
+                ws();
+                String head = s.substring(idx);
+                if(head.startsWith("extends")) {
+                    idx+=7;
+                    ws();
+                    return parseTypeName().wildcard();
+                } else
+                if(head.startsWith("super")) {
+                    throw new UnsupportedOperationException("? super T not implemented");
+                } else {
+                    // not supported
+                    throw new IllegalArgumentException("only extends/super can follow ?, but found "+s.substring(idx));
+                }
+            }
 
             while(idx<s.length()) {
                 char ch = s.charAt(idx);
@@ -418,6 +450,14 @@ public final class JCodeModel {
                 return parseArguments(clazz);
 
             return clazz;
+        }
+
+        /**
+         * Skips whitespaces
+         */
+        private void ws() {
+            while(Character.isWhitespace(s.charAt(idx)) && idx<s.length())
+                idx++;
         }
 
         /**
@@ -479,6 +519,12 @@ public final class JCodeModel {
 
         public String binaryName() {
             return _class.getName();
+        }
+
+        public JClass outer() {
+            Class p = _class.getDeclaringClass();
+            if(p==null)     return null;
+            return ref(p);
         }
 
         public JPackage _package() {
