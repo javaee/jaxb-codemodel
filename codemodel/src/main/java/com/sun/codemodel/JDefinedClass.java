@@ -302,8 +302,9 @@ public class JDefinedClass
     }
     
     /**
-     * This method generates reference to the JEnumConstant in
-     * the class
+     * If the named enum already exists, the reference to it is returned.
+     * Otherwise this method generates a new enum reference with the given
+     * name and returns it.
      *
      * @param name
      *  	The name of the constant.
@@ -311,9 +312,12 @@ public class JDefinedClass
      *      The generated type-safe enum constant.
      */
     public JEnumConstant enumConstant(String name){
-        JEnumConstant ec = new JEnumConstant(this, name);
-        enumConstantsByName.put(name, ec);
-    	return ec;
+        JEnumConstant ec = enumConstantsByName.get(name);
+        if (null == ec) {
+            ec = new JEnumConstant(this, name);
+            enumConstantsByName.put(name, ec);
+        }
+        return ec;
     }
 
     /**
@@ -571,7 +575,6 @@ public class JDefinedClass
      *      null if not found.
      */
     public JMethod getMethod(String name, JType[] argTypes) {
-        outer :
         for (JMethod m : methods) {
             if (!m.name().equals(name))
                 continue;
@@ -735,8 +738,8 @@ public class JDefinedClass
             f.nl().g(jdoc);
 
         if (annotations != null){
-            for( int i=0; i<annotations.size(); i++ )
-                f.g(annotations.get(i)).nl();
+            for (JAnnotationUse annotation : annotations)
+                f.g(annotation).nl();
         }
 
         f.g(mods).p(classType.declarationToken).id(name).d(generifiable);
