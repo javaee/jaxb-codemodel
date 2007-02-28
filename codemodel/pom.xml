@@ -104,4 +104,11 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>local-repository</id>
+			<url>${path-to-m2-repo.java.net.url}</url>
+		</repository>
+	</distributionManagement>
 </project>
