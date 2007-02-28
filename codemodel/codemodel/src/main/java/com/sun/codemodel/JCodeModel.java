@@ -441,13 +441,29 @@ public final class JCodeModel {
 
             JClass clazz = ref(s.substring(start,idx));
 
+            return parseSuffix(clazz);
+        }
+
+        /**
+         * Parses additional left-associative suffixes, like type arguments
+         * and array specifiers.
+         */
+        private JClass parseSuffix(JClass clazz) throws ClassNotFoundException {
             if(idx==s.length())
                 return clazz; // hit EOL
 
             char ch = s.charAt(idx);
 
             if(ch=='<')
-                return parseArguments(clazz);
+                return parseSuffix(parseArguments(clazz));
+
+            if(ch=='[') {
+                if(s.charAt(idx+1)==']') {
+                    idx+=2;
+                    return parseSuffix(clazz.array());
+                }
+                throw new IllegalArgumentException("Expected ']' but found "+s.substring(idx+1));
+            }
 
             return clazz;
         }
