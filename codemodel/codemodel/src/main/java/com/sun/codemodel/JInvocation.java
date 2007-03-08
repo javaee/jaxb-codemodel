@@ -36,9 +36,13 @@ public final class JInvocation extends JExpressionImpl implements JStatement {
     private JGenerable object;
 
     /**
-     * Name of the method to be invoked
+     * Name of the method to be invoked.
+     * Either this field is set, or {@link #method}.
+     * This allows {@link JMethod#name(String) the name of the method to be changed later}.
      */
     private String name;
+
+    private JMethod method;
 
     private boolean isConstructor = false;
 
@@ -66,6 +70,10 @@ public final class JInvocation extends JExpressionImpl implements JStatement {
     JInvocation(JExpression object, String name) {
         this( (JGenerable)object, name );
     }
+
+    JInvocation(JExpression object, JMethod method) {
+        this( (JGenerable)object, method );
+    }
     
     /**
      * Invokes a static method on a class.
@@ -73,15 +81,25 @@ public final class JInvocation extends JExpressionImpl implements JStatement {
     JInvocation(JClass type, String name) {
         this( (JGenerable)type, name );
     }
-    
+
+    JInvocation(JClass type, JMethod method) {
+        this( (JGenerable)type, method );
+    }
+
     private JInvocation(JGenerable object, String name) {
         this.object = object;
         if (name.indexOf('.') >= 0)
-            throw new IllegalArgumentException("JClass name contains '.': "
-                                               + name);
+            throw new IllegalArgumentException("method name contains '.': " + name);
         this.name = name;
     }
-    
+
+    private JInvocation(JGenerable object, JMethod method) {
+        this.object = object;
+        if (name.indexOf('.') >= 0)
+            throw new IllegalArgumentException("method name contains '.': " + name);
+        this.method =method;
+    }
+
     /**
      * Invokes a constructor of an object (i.e., creates
      * a new object.)
@@ -120,6 +138,9 @@ public final class JInvocation extends JExpressionImpl implements JStatement {
 
 
     public void generate(JFormatter f) {
+        String name = this.name;
+        if(name==null)  name=this.method.name();
+
         if (isConstructor && type.isArray()) {
             // [RESULT] new T[]{arg1,arg2,arg3,...};
             f.p("new").g(type).p('{');

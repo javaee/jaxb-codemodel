@@ -316,7 +316,7 @@ public abstract class JClass extends JType
 
     /** Generates a static method invocation. */
     public final JInvocation staticInvoke(JMethod method) {
-        return staticInvoke(method.name());
+        return new JInvocation(this,method);
     }
     
     /** Generates a static method invocation. */

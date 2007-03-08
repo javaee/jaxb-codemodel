@@ -263,7 +263,14 @@ public class JMethod extends JGenerifiableImpl implements JDeclaration, JAnnotat
 		return name;
 	}
 
-	/**
+    /**
+     * Changes the name of the method.
+     */
+    public void name(String n) {
+        this.name = name;
+    }
+
+    /**
 	 * Returns the return type.
 	 */
 	public JType type() {

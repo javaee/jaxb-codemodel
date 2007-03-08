@@ -52,11 +52,11 @@ public abstract class JExpr {
     }
     
     public static JInvocation invoke(JMethod method) {
-        return new JInvocation((JExpression)null,method.name());
+        return new JInvocation((JExpression)null,method);
     }
 
     public static JInvocation invoke(JExpression lhs, JMethod method) {
-        return new JInvocation(lhs, method.name());
+        return new JInvocation(lhs, method);
     }
 
     public static JInvocation invoke(JExpression lhs, String method) {
