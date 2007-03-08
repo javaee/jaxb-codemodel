@@ -95,8 +95,6 @@ public final class JInvocation extends JExpressionImpl implements JStatement {
 
     private JInvocation(JGenerable object, JMethod method) {
         this.object = object;
-        if (name.indexOf('.') >= 0)
-            throw new IllegalArgumentException("method name contains '.': " + name);
         this.method =method;
     }
 
