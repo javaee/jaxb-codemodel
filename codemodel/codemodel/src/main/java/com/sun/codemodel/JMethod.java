@@ -267,7 +267,7 @@ public class JMethod extends JGenerifiableImpl implements JDeclaration, JAnnotat
      * Changes the name of the method.
      */
     public void name(String n) {
-        this.name = name;
+        this.name = n;
     }
 
     /**
