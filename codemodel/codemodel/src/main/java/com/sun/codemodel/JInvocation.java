@@ -37,7 +37,8 @@ public final class JInvocation extends JExpressionImpl implements JStatement {
 
     /**
      * Name of the method to be invoked.
-     * Either this field is set, or {@link #method}.
+     * Either this field is set, or {@link #method}, or {@link #type} (in which case it's a
+     * constructor invocation.)
      * This allows {@link JMethod#name(String) the name of the method to be changed later}.
      */
     private String name;
@@ -136,19 +137,21 @@ public final class JInvocation extends JExpressionImpl implements JStatement {
 
 
     public void generate(JFormatter f) {
-        String name = this.name;
-        if(name==null)  name=this.method.name();
-
         if (isConstructor && type.isArray()) {
             // [RESULT] new T[]{arg1,arg2,arg3,...};
             f.p("new").g(type).p('{');
         } else {
             if (isConstructor)
                 f.p("new").g(type).p('(');
-            else if (object != null)
-                f.g(object).p('.').p(name).p('(');
-            else
-                f.id(name).p('(');
+            else {
+                String name = this.name;
+                if(name==null)  name=this.method.name();
+
+                if (object != null)
+                    f.g(object).p('.').p(name).p('(');
+                else
+                    f.id(name).p('(');
+            }
         }
                 
         f.g(args);
