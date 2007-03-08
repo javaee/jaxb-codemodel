@@ -245,7 +245,14 @@ public class JDefinedClass
             throw new IllegalArgumentException("unable to set the super class for an interface");
         if (superClass == null)
             throw new NullPointerException();
-
+        
+        for( JClass o=superClass.outer(); o!=null; o=o.outer() ){
+            if(this==o){
+                throw new IllegalArgumentException("Illegal class inheritance loop." +
+                "  Outer class " + this.name + " may not subclass from inner class: " + o.name());
+            }
+        }
+        
         this.superClass = superClass;
         return this;
     }
