@@ -277,7 +277,14 @@ public class JMethod extends JGenerifiableImpl implements JDeclaration, JAnnotat
 		return type;
 	}
 
-	/**
+    /**
+     * Overrides the return type.
+     */
+    public void type(JType t) {
+        this.type = t;
+    }
+
+    /**
 	 * Returns all the parameter types in an array.
 	 * @return
 	 *      If there's no parameter, an empty array will be returned.
