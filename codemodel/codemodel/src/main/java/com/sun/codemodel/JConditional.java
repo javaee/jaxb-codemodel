@@ -70,6 +70,13 @@ public class JConditional implements JStatement {
         return _else;
     }
 
+    /**
+     * Creates <tt>... else if(...) ...</tt> code.
+     */
+    public JConditional _elseif(JExpression boolExp) {
+        return _else()._if(boolExp);
+    }
+
     public void state(JFormatter f) {
         if(test==JExpr.TRUE) {
             _then.generateBody(f);
