@@ -194,8 +194,7 @@ public final class JAnnotationUse extends JAnnotationValue {
       *
       */
      public JAnnotationUse param(String name, Class value){
-         addValue(name, new JAnnotationStringValue(JExpr.lit(value.getName())));
-         return this;
+         return param(name,clazz.owner().ref(value));
     }
 
     /**
