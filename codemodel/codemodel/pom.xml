@@ -19,6 +19,15 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
+      <plugin>
+        <groupId>com.sun.wts.tools.ant</groupId>
+        <artifactId>package-rename-task</artifactId>
+        <configuration>
+          <patterns>
+            <com.sun.codemodel>com.sun.codemodel.internal</com.sun.codemodel>
+          </patterns>
+        </configuration>
+      </plugin>
 		</plugins>
 	</build>
 
