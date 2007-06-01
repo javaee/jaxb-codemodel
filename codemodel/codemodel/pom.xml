@@ -10,7 +10,8 @@
 	<artifactId>codemodel</artifactId>
 	<name>Codemodel Core</name>
 	<description>The core functionality of the CodeModel java source code generation library</description>
-	<build>
+
+  <build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -22,6 +23,7 @@
       <plugin>
         <groupId>com.sun.wts.tools.ant</groupId>
         <artifactId>package-rename-task</artifactId>
+        <version>1.1</version>
         <configuration>
           <patterns>
             <com.sun.codemodel>com.sun.codemodel.internal</com.sun.codemodel>
