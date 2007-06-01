@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ The contents of this file are subject to the terms
+ of the Common Development and Distribution License
+ (the "License").  You may not use this file except
+ in compliance with the License.
+
+ You can obtain a copy of the license at
+ https://jwsdp.dev.java.net/CDDLv1.0.html
+ See the License for the specific language governing
+ permissions and limitations under the License.
+
+ When distributing Covered Code, include this CDDL
+ HEADER in each file and include the License file at
+ https://jwsdp.dev.java.net/CDDLv1.0.html  If applicable,
+ add the following below this CDDL HEADER, with the
+ fields enclosed by brackets "[]" replaced with your
+ own identifying information: Portions Copyright [yyyy]
+ [name of copyright owner]
+-->
+
+<!-- Use the following doctypedecl for DTD aware editing.  Comment out b/c
+     it presumably causes Ant problems for some users.
+<!DOCTYPE project PUBLIC "-//ANT//DTD project//EN" "project.dtd">
+-->
+<project name="codemodel" basedir="." default="j2se-integration">
+   <description>
+	Target to enable integration of this module
+	with J2SE version 6.
+   </description>
+
+   <import file="build-taskdefs.xml" />
+
+   <target name="j2se-integration"
+          description="prepare renamed source code for J2SE integration">
+      <package-rename srcdir="${basedir}/src/main/java"  
+		      destdir="j2se-integration/" />
+   </target>
+
+   <target name="clean">
+	<delete dir="${basedir}/j2se-integration" />
+   </target>
+
+</project>
