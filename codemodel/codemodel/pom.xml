@@ -26,7 +26,7 @@
         <version>1.1</version>
         <configuration>
           <patterns>
-            <com.sun.codemodel>com.sun.codemodel.internal</com.sun.codemodel>
+            <com.sun.codemodel>sun.codemodel.internal</com.sun.codemodel>
           </patterns>
         </configuration>
       </plugin>
