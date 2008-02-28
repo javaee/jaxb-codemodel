@@ -53,7 +53,8 @@ public class JCommentPart extends ArrayList<Object> {
      */
     protected void format( JFormatter f, String indent ) {
         if(!f.isPrinting()) {
-            // quickly pass the types to JFormatter
+            // quickly pass the types to JFormatter, as that's all we care.
+            // we don't need to worry about the exact formatting of text.
             for( Object o : this )
                 if(o instanceof JClass)
                     f.g((JClass)o);
