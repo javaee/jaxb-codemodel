@@ -74,12 +74,12 @@ public class JCommentPart extends ArrayList<Object> {
                 while( (idx=s.indexOf('\n'))!=-1 ) {
                     String line = s.substring(0,idx);
                     if(line.length()>0)
-                        f.p(line);
+                        f.p(escape(line));
                     s = s.substring(idx+1);
                     f.nl().p(indent);
                 }
                 if(s.length()!=0)
-                    f.p(s);
+                    f.p(escape(s));
             } else
             if(o instanceof JClass) {
                 // TODO: this doesn't print the parameterized type properly
@@ -93,5 +93,17 @@ public class JCommentPart extends ArrayList<Object> {
 
         if(!isEmpty())
             f.nl();
+    }
+
+    /**
+     * Escapes the appearance of the comment terminator.
+     */
+    private String escape(String s) {
+        while(true) {
+            int idx = s.indexOf("*/");
+            if(idx <0)   return s;
+
+            s = s.substring(0,idx+1)+"<!---->"+s.substring(idx+1);
+        }
     }
 }
