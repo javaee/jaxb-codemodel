@@ -69,8 +69,8 @@
   </contributors>
   <licenses>
     <license>
-      <name>COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0</name>
-      <url>http://www.sun.com/cddl/cddl.html</url>
+      <name>CDDL v1.0 / GPL v2 dual license</name>
+      <url>https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -115,6 +115,13 @@
       <id>java.net-maven2-repository</id>
       <url>java-net:/maven2-repository/trunk/www/repository/</url>
     </repository>
+    <site>
+      <id>codemodel-www</id>
+      <url>java-net:/codemodel/trunk/www/</url>
+
+      <!-- this is faster when testing stuff -->
+      <!--url>file:../www</url-->
+    </site>
   </distributionManagement>
   <repositories>
     <repository>
