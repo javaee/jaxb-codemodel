@@ -187,11 +187,41 @@ public abstract class JExpr {
     }
 
     public static JExpression lit(float f) {
-        return new JAtom(Float.toString(f) + "F");
+    	if (f == Float.NEGATIVE_INFINITY)
+    	{
+    		return new JAtom("java.lang.Float.NEGATIVE_INFINITY");
+    	}
+    	else if (f == Float.POSITIVE_INFINITY)
+    	{
+    		return new JAtom("java.lang.Float.POSITIVE_INFINITY");
+    	}
+    	else if (Float.isNaN(f))
+    	{
+    		return new JAtom("java.lang.Float.NaN");
+    	}
+    	else
+    	{
+    		return new JAtom(Float.toString(f) + "F");
+    	}
     }
 
     public static JExpression lit(double d) {
-        return new JAtom(Double.toString(d) + "D");
+    	if (d == Double.NEGATIVE_INFINITY)
+    	{
+    		return new JAtom("java.lang.Double.NEGATIVE_INFINITY");
+    	}
+    	else if (d == Double.POSITIVE_INFINITY)
+    	{
+    		return new JAtom("java.lang.Double.POSITIVE_INFINITY");
+    	}
+    	else if (Double.isNaN(d))
+    	{
+    		return new JAtom("java.lang.Double.NaN");
+    	}
+    	else
+    	{
+    		return new JAtom(Double.toString(d) + "D");
+    	}
     }
 
     static final String charEscape = "\b\t\n\f\r\"\'\\";
