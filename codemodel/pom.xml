@@ -1,139 +1,168 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.sun</groupId>
-  <artifactId>codemodel</artifactId>
-  <name>Codemodel</name>
-  <version>2.2-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <description>Java source code generation library</description>
-  <modules>
-    <module>codemodel</module>
-    <module>codemodel-annotation-compiler</module>
-  </modules>
-  <url>https://codemodel.dev.java.net/</url>
-  <issueManagement>
-    <system>CollabNet</system>
-    <url>https://codemodel.dev.java.net/servlets/ProjectIssues</url>
-  </issueManagement>
-  <!-- this is a guess based on the first commit -->
-  <inceptionYear>2005</inceptionYear>
-  <mailingLists>
-    <mailingList>
-      <name>Users List</name>
-      <subscribe>users-subscribe@codemodel.dev.java.net</subscribe>
-      <unsubscribe>users-unsubscribe@codemodel.dev.java.net</unsubscribe>
-      <post>users@codemodel.dev.java.net</post>
-      <archive>https://codemodel.dev.java.net/servlets/SummarizeList?listName=users</archive>
-    </mailingList>
-    <mailingList>
-      <name>Issues List</name>
-      <subscribe>issues-subscribe@codemodel.dev.java.net</subscribe>
-      <unsubscribe>issues-unsubscribe@codemodel.dev.java.net</unsubscribe>
-      <post>issues@codemodel.dev.java.net</post>
-      <archive>https://codemodel.dev.java.net/servlets/SummarizeList?listName=users</archive>
-    </mailingList>
-    <mailingList>
-      <name>Commits List</name>
-      <subscribe>commits-subscribe@codemodel.dev.java.net</subscribe>
-      <unsubscribe>commits-unsubscribe@codemodel.dev.java.net</unsubscribe>
-      <post>commits@codemodel.dev.java.net</post>
-      <archive>https://codemodel.dev.java.net/servlets/SummarizeList?listName=users</archive>
-    </mailingList>
-  </mailingLists>
-  <developers>
-    <developer>
-      <id>kohsuke</id>
-      <name>Kohsuke Kawaguchi</name>
-      <email>kohsuke.kawaguchi@sun.com</email>
-    </developer>
-    <developer>
-      <name>Ryan Shoemaker</name>
-      <id>ryans</id>
-      <email>ryan.shoemaker@sun.com</email>
-    </developer>
-    <developer>
-      <name>Bhakti Mehta</name>
-      <id>bhakti</id>
-      <email>bhakti.mehta@sun.com</email>
-    </developer>
-  </developers>
-  <contributors>
-    <contributor>
-      <name>Gregory Kick</name>
-      <email>gk5885@kickstyle.net</email>
-      <organization>KickStyle</organization>
-      <organizationUrl>http://kickstyle.net/</organizationUrl>
-      <timezone>-6</timezone>
-    </contributor>
-  </contributors>
-  <licenses>
-    <license>
-      <name>CDDL v1.0 / GPL v2 dual license</name>
-      <url>https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-  <scm>
-    <connection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk</connection>
-    <url>https://codemodel.dev.java.net/source/browse/codemodel/</url>
-  </scm>
-  <organization>
-    <name>Sun Microsystems</name>
-    <url>http://www.sun.com/</url>
-  </organization>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-    </plugins>
-    <extensions>
-      <extension>
-        <groupId>org.jvnet.wagon-svn</groupId>
-        <artifactId>wagon-svn</artifactId>
-        <version>1.8</version>
-      </extension>
-    </extensions>
-  </build>
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </reporting>
-  <distributionManagement>
-    <repository>
-      <uniqueVersion>false</uniqueVersion>
-      <id>java.net-maven2-repository</id>
-      <url>java-net:/maven2-repository/trunk/www/repository/</url>
-    </repository>
-    <site>
-      <id>codemodel-www</id>
-      <url>java-net:/codemodel/trunk/www/</url>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sun</groupId>
+	<artifactId>codemodel</artifactId>
+	<name>Codemodel</name>
+	<version>2.2-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<description>Java source code generation library</description>
+	<modules>
+		<module>codemodel</module>
+		<module>codemodel-annotation-compiler</module>
+	</modules>
+	<url>https://codemodel.dev.java.net/</url>
+	<issueManagement>
+		<system>CollabNet</system>
+		<url>https://codemodel.dev.java.net/servlets/ProjectIssues</url>
+	</issueManagement>
+	<!-- this is a guess based on the first commit -->
+	<inceptionYear>2005</inceptionYear>
+	<mailingLists>
+		<mailingList>
+			<name>Users List</name>
+			<subscribe>
+				users-subscribe@codemodel.dev.java.net
+			</subscribe>
+			<unsubscribe>
+				users-unsubscribe@codemodel.dev.java.net
+			</unsubscribe>
+			<post>users@codemodel.dev.java.net</post>
+			<archive>
+				https://codemodel.dev.java.net/servlets/SummarizeList?listName=users
+			</archive>
+		</mailingList>
+		<mailingList>
+			<name>Issues List</name>
+			<subscribe>
+				issues-subscribe@codemodel.dev.java.net
+			</subscribe>
+			<unsubscribe>
+				issues-unsubscribe@codemodel.dev.java.net
+			</unsubscribe>
+			<post>issues@codemodel.dev.java.net</post>
+			<archive>
+				https://codemodel.dev.java.net/servlets/SummarizeList?listName=users
+			</archive>
+		</mailingList>
+		<mailingList>
+			<name>Commits List</name>
+			<subscribe>
+				commits-subscribe@codemodel.dev.java.net
+			</subscribe>
+			<unsubscribe>
+				commits-unsubscribe@codemodel.dev.java.net
+			</unsubscribe>
+			<post>commits@codemodel.dev.java.net</post>
+			<archive>
+				https://codemodel.dev.java.net/servlets/SummarizeList?listName=users
+			</archive>
+		</mailingList>
+	</mailingLists>
+	<developers>
+		<developer>
+			<id>kohsuke</id>
+			<name>Kohsuke Kawaguchi</name>
+			<email>kohsuke.kawaguchi@sun.com</email>
+		</developer>
+		<developer>
+			<name>Ryan Shoemaker</name>
+			<id>ryans</id>
+			<email>ryan.shoemaker@sun.com</email>
+		</developer>
+		<developer>
+			<name>Bhakti Mehta</name>
+			<id>bhakti</id>
+			<email>bhakti.mehta@sun.com</email>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Gregory Kick</name>
+			<email>gk5885@kickstyle.net</email>
+			<organization>KickStyle</organization>
+			<organizationUrl>http://kickstyle.net/</organizationUrl>
+			<timezone>-6</timezone>
+		</contributor>
+		<contributor>
+			<name>Aleksei Valikov</name>
+			<email>valikov@gmx.net</email>
+		</contributor>
+	</contributors>
+	<licenses>
+		<license>
+			<name>CDDL v1.0 / GPL v2 dual license</name>
+			<url>
+				https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html
+			</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<connection>
+			scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk
+		</connection>
+		<url>
+			https://codemodel.dev.java.net/source/browse/codemodel/
+		</url>
+	</scm>
+	<organization>
+		<name>Sun Microsystems</name>
+		<url>http://www.sun.com/</url>
+	</organization>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.jvnet.wagon-svn</groupId>
+				<artifactId>wagon-svn</artifactId>
+				<version>1.8</version>
+			</extension>
+		</extensions>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>java.net-maven2-repository</id>
+			<url>java-net:/maven2-repository/trunk/www/repository/</url>
+		</repository>
+		<site>
+			<id>codemodel-www</id>
+			<url>java-net:/codemodel/trunk/www/</url>
 
-      <!-- this is faster when testing stuff -->
-      <!--url>file:../www</url-->
-    </site>
-  </distributionManagement>
-  <repositories>
-    <repository>
-      <id>maven2-repository.dev.java.net</id>
-      <name>Java.net Repository for Maven</name>
-      <url>http://download.java.net/maven/2/</url>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>java.net2</id>
-      <url>http://download.java.net/maven/2/</url>
-    </pluginRepository>
-  </pluginRepositories>
+			<!-- this is faster when testing stuff -->
+			<!--url>file:../www</url-->
+		</site>
+	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>java.net2</id>
+			<url>http://download.java.net/maven/2</url>
+		</pluginRepository>
+	</pluginRepositories>
 </project>

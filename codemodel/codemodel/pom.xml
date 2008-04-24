@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
 		<artifactId>codemodel</artifactId>
 		<groupId>com.sun</groupId>
@@ -10,8 +12,7 @@
 	<artifactId>codemodel</artifactId>
 	<name>Codemodel Core</name>
 	<description>The core functionality of the CodeModel java source code generation library</description>
-
-  <build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -20,24 +21,24 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
-      <plugin>
-        <groupId>com.sun.wts.tools.ant</groupId>
-        <artifactId>package-rename-task</artifactId>
-        <version>1.1</version>
-        <configuration>
-          <patterns>
-            <com.sun.codemodel>com.sun.codemodel.internal</com.sun.codemodel>
-          </patterns>
-        </configuration>
-      </plugin>
+			<plugin>
+				<groupId>com.sun.wts.tools.ant</groupId>
+				<artifactId>package-rename-task</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<patterns>
+						<com.sun.codemodel>com.sun.codemodel.internal</com.sun.codemodel>
+					</patterns>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8</version>
-    </dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8</version>
+		</dependency>
+	</dependencies>
 </project>
