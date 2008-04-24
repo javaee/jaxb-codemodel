@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" output="codemodel/target/classes" path="codemodel/src/main/java"/>
+	<classpathentry kind="src" output="codemodel/target/test-classes" path="codemodel/src/test/java"/>
 	<classpathentry kind="src" output="codemodel/target/classes" path="codemodel/src/main/javadoc"/>
 	<classpathentry kind="src" output="codemodel-annotation-compiler/target/classes" path="codemodel-annotation-compiler/src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>
+	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER/modules"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
