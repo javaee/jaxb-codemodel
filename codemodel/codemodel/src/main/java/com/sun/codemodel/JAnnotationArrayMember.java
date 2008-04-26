@@ -71,7 +71,79 @@ public final class JAnnotationArrayMember extends JAnnotationValue implements JA
         return this;
     }
 
+    /**
+     * Adds an array member to this annotation
+     *
+     * @param value Adds a boolean value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
     public JAnnotationArrayMember param(boolean value) {
+        JAnnotationValue annotationValue = new JAnnotationStringValue(JExpr.lit(value));
+        values.add(annotationValue);
+        return this;
+    }
+    
+    /**
+     * Adds an array member to this annotation
+     *
+     * @param value Adds a byte value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
+    public JAnnotationArrayMember param(byte value) {
+        JAnnotationValue annotationValue = new JAnnotationStringValue(JExpr.lit(value));
+        values.add(annotationValue);
+        return this;
+    }
+    
+    /**
+     * Adds an array member to this annotation
+     *
+     * @param value Adds a char value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
+    public JAnnotationArrayMember param(char value) {
+        JAnnotationValue annotationValue = new JAnnotationStringValue(JExpr.lit(value));
+        values.add(annotationValue);
+        return this;
+    }
+
+    /**
+     * Adds an array member to this annotation
+     *
+     * @param value Adds a double value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
+    public JAnnotationArrayMember param(double value) {
+        JAnnotationValue annotationValue = new JAnnotationStringValue(JExpr.lit(value));
+        values.add(annotationValue);
+        return this;
+    }
+
+    /**
+     * Adds an array member to this annotation
+     *
+     * @param value Adds a long value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
+    public JAnnotationArrayMember param(long value) {
+        JAnnotationValue annotationValue = new JAnnotationStringValue(JExpr.lit(value));
+        values.add(annotationValue);
+        return this;
+    }
+    
+    /**
+     * Adds an array member to this annotation
+     *
+     * @param value Adds a short value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
+    public JAnnotationArrayMember param(short value) {
         JAnnotationValue annotationValue = new JAnnotationStringValue(JExpr.lit(value));
         values.add(annotationValue);
         return this;
@@ -102,9 +174,53 @@ public final class JAnnotationArrayMember extends JAnnotationValue implements JA
         values.add(annotationValue);
         return this;
     }
+    
+    /**
+     * Adds a enum array member to this annotation
+     *
+     * @param value Adds a enum value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
+    public JAnnotationArrayMember param(final Enum value) {
+        JAnnotationValue annotationValue = new JAnnotationValue() {
+            public void generate(JFormatter f) {
+                f.t(owner.ref(value.getDeclaringClass())).p('.').p(value.name());
+            }
+        };
+        values.add(annotationValue);
+        return this;
+    }
 
-    public JAnnotationArrayMember param(Class value){
-       JAnnotationValue annotationValue = new JAnnotationStringValue(JExpr.lit(value.getName()));
+    /**
+     * Adds a enum array member to this annotation
+     *
+     * @param value Adds a enum value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
+    public JAnnotationArrayMember param(final JEnumConstant value) {
+        JAnnotationValue annotationValue = new JAnnotationStringValue(value);
+        values.add(annotationValue);
+        return this;
+    }
+    
+
+    /**
+     * Adds a class array member to this annotation
+     *
+     * @param value Adds a class value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
+    public JAnnotationArrayMember param(final Class value){
+       JAnnotationValue annotationValue = new JAnnotationStringValue(
+    		   new JExpressionImpl() {
+      			 public void generate(JFormatter f) {
+      				 f.p(value.getName().replace('$', '.'));
+      				 f.p(".class");
+      			}
+      		 });
        values.add(annotationValue);
        return this;
    }

@@ -130,7 +130,6 @@ public final class JBlock implements JGenerable, JStatement {
         return content.isEmpty();
     }
 
-
     /**
      * Adds a local variable declaration to this block
      *
