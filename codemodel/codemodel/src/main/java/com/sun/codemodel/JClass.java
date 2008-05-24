@@ -276,6 +276,10 @@ public abstract class JClass extends JType
         return new JNarrowedClass(this,clazz);
     }
 
+    public JClass narrow( JType type ) {
+        return narrow(type.boxify());
+    }
+
     public JClass narrow( JClass... clazz ) {
         return new JNarrowedClass(this,Arrays.asList(clazz.clone()));
     }
