@@ -36,7 +36,10 @@
 package com.sun.codemodel;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 import java.lang.annotation.Annotation;
 
 /**
@@ -138,6 +141,16 @@ public final class JEnumConstant extends JExpressionImpl implements JDeclaration
 
     public <W extends JAnnotationWriter> W annotate2(Class<W> clazz) {
         return TypedAnnotationWriter.create(clazz,this);
+    }
+
+    /**
+     * {@link JAnnotatable#annotations()}
+     */
+    @Override
+    public Collection<JAnnotationUse> annotations() {
+        if (annotations == null)
+            annotations = new ArrayList<JAnnotationUse>();
+        return Collections.unmodifiableList(annotations);
     }
 
     public void declare(JFormatter f) {

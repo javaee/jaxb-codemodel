@@ -38,9 +38,12 @@ package com.sun.codemodel;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.Collections;
+import java.util.Collection;
 
 import com.sun.codemodel.util.ClassNameComparator;
 
@@ -267,7 +270,14 @@ public class JMethod extends JGenerifiableImpl implements JDeclaration, JAnnotat
         return TypedAnnotationWriter.create(clazz,this);
     }
 
-	/**
+    @Override
+    public Collection<JAnnotationUse> annotations() {
+        if (annotations == null)
+            annotations = new ArrayList<JAnnotationUse>();
+        return Collections.unmodifiableList(annotations);
+    }
+
+    /**
 	 * Check if there are any varargs declared
 	 * for this method signature.
 	 */

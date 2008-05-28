@@ -37,6 +37,8 @@
 package com.sun.codemodel;
 
 import java.lang.annotation.Annotation;
+import java.util.Iterator;
+import java.util.Collection;
 
 /**
  * Annotatable program elements.
@@ -64,4 +66,12 @@ public interface JAnnotatable {
      * and returns a type-safe writer to fill in the values of such annotations.
      */
     <W extends JAnnotationWriter> W annotate2(Class<W> clazz);
+    
+    /**
+     * Read-only live view of all annotations on this {@link JAnnotatable}
+     * 
+     * @return
+     *      Can be empty but never null.
+     */
+    Collection<JAnnotationUse> annotations();
 }

@@ -52,6 +52,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.Collection;
+import java.util.Collections;
 
 
 /**
@@ -397,6 +399,12 @@ public final class JPackage implements JDeclaration, JGenerable, JClassContainer
         return TypedAnnotationWriter.create(clazz,this);
     }
 
+    @Override
+    public Collection<JAnnotationUse> annotations() {
+        if (annotations == null)
+            annotations = new ArrayList<JAnnotationUse>();
+        return Collections.unmodifiableList(annotations);
+    }
 
     /**
      * Convert the package name to directory path equivalent

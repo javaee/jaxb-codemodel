@@ -38,7 +38,10 @@ package com.sun.codemodel;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Represents an arrays as annotation members
@@ -250,6 +253,16 @@ public final class JAnnotationArrayMember extends JAnnotationValue implements JA
 
     public <W extends JAnnotationWriter> W annotate2(Class<W> clazz) {
         return TypedAnnotationWriter.create(clazz,this);
+    }
+    
+    /**
+     * {@link JAnnotatable#annotations()}
+     */
+    @Override
+    public Collection<JAnnotationUse> annotations() {
+        // this invocation is invalid if the caller isn't adding annotations into an array
+        // so this potentially type-unsafe conversion would be justified.
+        return Collections.<JAnnotationUse>unmodifiableList((List)values);
     }
 
     /**

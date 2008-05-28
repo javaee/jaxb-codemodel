@@ -258,7 +258,9 @@ public class JDefinedClass
      */
     public JDefinedClass _extends(JClass superClass) {
         if (this.classType==ClassType.INTERFACE)
-            throw new IllegalArgumentException("unable to set the super class for an interface");
+        	if(superClass.isInterface()){
+        		return this._implements(superClass);
+        	} else throw new IllegalArgumentException("unable to set the super class for an interface");
         if (superClass == null)
             throw new NullPointerException();
         
@@ -883,5 +885,15 @@ public class JDefinedClass
 
     public <W extends JAnnotationWriter> W annotate2(Class<W> clazz) {
         return TypedAnnotationWriter.create(clazz,this);
+    }
+
+    /**
+     * {@link JAnnotatable#annotations()}
+     */
+    @Override
+    public Collection<JAnnotationUse> annotations() {
+        if (annotations == null)
+            annotations = new ArrayList<JAnnotationUse>();
+        return Collections.unmodifiableCollection(annotations);
     }
 }

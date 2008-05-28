@@ -38,7 +38,10 @@ package com.sun.codemodel;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Collection;
+import java.util.Collections;
 
 
 /**
@@ -184,6 +187,13 @@ public class JVar extends JExpressionImpl implements JDeclaration, JAssignmentTa
 
     public <W extends JAnnotationWriter> W annotate2(Class<W> clazz) {
         return TypedAnnotationWriter.create(clazz,this);
+    }
+
+    @Override
+    public Collection<JAnnotationUse> annotations() {
+        if (annotations == null)
+            annotations = new ArrayList<JAnnotationUse>();
+        return Collections.unmodifiableList(annotations);
     }
 
     protected boolean isAnnotated() {
