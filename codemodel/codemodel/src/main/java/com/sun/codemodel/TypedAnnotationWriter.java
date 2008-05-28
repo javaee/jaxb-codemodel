@@ -247,7 +247,7 @@ class TypedAnnotationWriter<A extends Annotation,W extends JAnnotationWriter<A>>
                     return (Class<? extends Annotation>)p.getActualTypeArguments()[0];
             }
             if(t instanceof Class) {
-                // recurisve search
+                // recursive search
                 Class<? extends Annotation> r = findAnnotationType((Class)t);
                 if(r!=null)     return r;
             }
