@@ -42,7 +42,7 @@ package com.sun.codemodel;
 /**
  * A field that can have a {@link JDocComment} associated with it
  */
-public class JFieldVar extends JVar {
+public class JFieldVar extends JVar implements JDocCommentable {
 
     /**
      * javadoc comments for this JFieldVar

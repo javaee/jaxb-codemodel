@@ -47,7 +47,7 @@ import java.lang.annotation.Annotation;
  * @author
  *     Bhakti Mehta (Bhakti.Mehta@sun.com)
  */
-public final class JEnumConstant extends JExpressionImpl implements JDeclaration, JAnnotatable {
+public final class JEnumConstant extends JExpressionImpl implements JDeclaration, JAnnotatable, JDocCommentable {
 
     /**
      * The constant.

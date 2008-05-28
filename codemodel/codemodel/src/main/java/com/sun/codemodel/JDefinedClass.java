@@ -62,7 +62,7 @@ import java.util.TreeSet;
  */
 public class JDefinedClass
     extends JClass
-    implements JDeclaration, JClassContainer, JGenerifiable, JAnnotatable {
+    implements JDeclaration, JClassContainer, JGenerifiable, JAnnotatable, JDocCommentable {
 
     /** Name of this class. Null if anonymous. */
     private String name = null;

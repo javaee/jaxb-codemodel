@@ -57,7 +57,7 @@ import java.util.TreeMap;
 /**
  * A Java package.
  */
-public final class JPackage implements JDeclaration, JGenerable, JClassContainer, JAnnotatable, Comparable<JPackage> {
+public final class JPackage implements JDeclaration, JGenerable, JClassContainer, JAnnotatable, Comparable<JPackage>, JDocCommentable {
 
     /**
      * Name of the package.

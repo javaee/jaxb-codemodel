@@ -47,7 +47,7 @@ import com.sun.codemodel.util.ClassNameComparator;
 /**
  * Java method.
  */
-public class JMethod extends JGenerifiableImpl implements JDeclaration, JAnnotatable {
+public class JMethod extends JGenerifiableImpl implements JDeclaration, JAnnotatable, JDocCommentable {
 
 	/**
 	 * Modifiers for this method
