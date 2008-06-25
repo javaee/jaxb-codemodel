@@ -890,7 +890,6 @@ public class JDefinedClass
     /**
      * {@link JAnnotatable#annotations()}
      */
-    @Override
     public Collection<JAnnotationUse> annotations() {
         if (annotations == null)
             annotations = new ArrayList<JAnnotationUse>();

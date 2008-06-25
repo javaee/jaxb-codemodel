@@ -189,7 +189,6 @@ public class JVar extends JExpressionImpl implements JDeclaration, JAssignmentTa
         return TypedAnnotationWriter.create(clazz,this);
     }
 
-    @Override
     public Collection<JAnnotationUse> annotations() {
         if (annotations == null)
             annotations = new ArrayList<JAnnotationUse>();

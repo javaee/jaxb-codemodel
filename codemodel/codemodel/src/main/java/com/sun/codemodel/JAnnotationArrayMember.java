@@ -258,7 +258,6 @@ public final class JAnnotationArrayMember extends JAnnotationValue implements JA
     /**
      * {@link JAnnotatable#annotations()}
      */
-    @Override
     public Collection<JAnnotationUse> annotations() {
         // this invocation is invalid if the caller isn't adding annotations into an array
         // so this potentially type-unsafe conversion would be justified.

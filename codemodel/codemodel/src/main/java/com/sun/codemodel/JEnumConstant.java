@@ -146,7 +146,6 @@ public final class JEnumConstant extends JExpressionImpl implements JDeclaration
     /**
      * {@link JAnnotatable#annotations()}
      */
-    @Override
     public Collection<JAnnotationUse> annotations() {
         if (annotations == null)
             annotations = new ArrayList<JAnnotationUse>();
