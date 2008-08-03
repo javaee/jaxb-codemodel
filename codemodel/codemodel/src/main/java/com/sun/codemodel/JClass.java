@@ -285,7 +285,7 @@ public abstract class JClass extends JType
     }
 
     public JClass narrow( List<? extends JClass> clazz ) {
-        return new JNarrowedClass(this,new ArrayList(clazz));
+        return new JNarrowedClass(this,new ArrayList<JClass>(clazz));
     }
 
     /**
