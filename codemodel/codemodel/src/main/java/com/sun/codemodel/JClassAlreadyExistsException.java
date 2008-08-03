@@ -42,7 +42,10 @@ package com.sun.codemodel;
  * 	Kohsuke Kawaguchi (kohsuke.kawaguchi@sun.com)
  */
 public class JClassAlreadyExistsException extends Exception {
-    private final JDefinedClass existing;
+
+	private static final long serialVersionUID = 1L;
+
+	private final JDefinedClass existing;
     
     public JClassAlreadyExistsException( JDefinedClass _existing ) {
         this.existing = _existing;

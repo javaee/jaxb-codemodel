@@ -55,7 +55,10 @@ import java.util.Iterator;
  * @author Kohsuke Kawaguchi
  */
 public class JCommentPart extends ArrayList<Object> {
-    /**
+
+	private static final long serialVersionUID = 1L;
+
+	/**
      * Appends a new value.
      *
      * If the value is {@link JType} it will be printed as a @link tag.

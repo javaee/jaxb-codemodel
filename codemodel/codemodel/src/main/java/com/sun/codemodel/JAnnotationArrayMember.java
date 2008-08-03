@@ -38,7 +38,6 @@ package com.sun.codemodel;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Collection;
 import java.util.Collections;
@@ -258,10 +257,11 @@ public final class JAnnotationArrayMember extends JAnnotationValue implements JA
     /**
      * {@link JAnnotatable#annotations()}
      */
-    public Collection<JAnnotationUse> annotations() {
+    @SuppressWarnings("unchecked")
+	public Collection<JAnnotationUse> annotations() {
         // this invocation is invalid if the caller isn't adding annotations into an array
         // so this potentially type-unsafe conversion would be justified.
-        return Collections.<JAnnotationUse>unmodifiableList((List)values);
+        return Collections.<JAnnotationUse>unmodifiableList((List<? extends JAnnotationUse>)values);
     }
 
     /**

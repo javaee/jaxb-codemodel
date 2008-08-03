@@ -50,8 +50,9 @@ import java.util.Map;
  */
 public class JDocComment extends JCommentPart implements JGenerable {
 
+	private static final long serialVersionUID = 1L;
 
-    /** list of @param tags */
+	/** list of @param tags */
     private final Map<String,JCommentPart> atParams = new HashMap<String,JCommentPart>();
     
     /** list of xdoclets */
