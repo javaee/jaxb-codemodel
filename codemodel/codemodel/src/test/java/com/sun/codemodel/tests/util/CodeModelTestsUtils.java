@@ -2,9 +2,6 @@ package com.sun.codemodel.tests.util;
 
 import java.io.StringWriter;
 
-import junit.framework.Assert;
-
-import com.sun.codemodel.JExpr;
 import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JFormatter;
 

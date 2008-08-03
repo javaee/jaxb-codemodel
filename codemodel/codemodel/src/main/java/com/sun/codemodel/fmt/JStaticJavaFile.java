@@ -226,7 +226,7 @@ public final class JStaticJavaFile extends JResourceFile {
             throw new UnsupportedOperationException();
         }
 
-        public Iterator _implements() {
+        public Iterator<JClass> _implements() {
             throw new UnsupportedOperationException();
         }
 

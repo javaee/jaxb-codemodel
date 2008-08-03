@@ -64,7 +64,7 @@ public class EncoderFactory {
                 
                 // statically binding to MS1252Encoder will cause a Link error
                 // (at least in IBM JDK1.4.1)
-                Class ms1252encoder = Class.forName("com.sun.codemodel.util.MS1252Encoder");
+                Class<?> ms1252encoder = Class.forName("com.sun.codemodel.util.MS1252Encoder");
                 Constructor c = ms1252encoder.getConstructor(new Class[]{
                     Charset.class
                 });

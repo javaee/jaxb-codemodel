@@ -90,7 +90,8 @@ public class VarArgsTest {
             //JVar[] var1 = m.varParam(Float.class, "param4");
             JClass string = cm.ref(String.class);
             JClass stringArray = string.array();
-            JVar param5 = m.param(String.class, "param5");
+//            JVar param5 =
+            m.param(String.class, "param5");
             
             JForLoop forloop = m.body()._for();
             
@@ -101,10 +102,11 @@ public class VarArgsTest {
             
             JFieldRef out = cm.ref(System.class).staticRef("out");
             
-            JVar typearray = m.listVarParam();
+//            JVar typearray = 
+            m.listVarParam();
             
-            JInvocation invocation =
-                forloop.body().invoke(out, "println").arg(
+//            JInvocation invocation =
+            forloop.body().invoke(out, "println").arg(
                     JExpr.direct("param3[count]"));
             
             JMethod main = cls.method(JMod.PUBLIC | JMod.STATIC, cm.VOID, "main");

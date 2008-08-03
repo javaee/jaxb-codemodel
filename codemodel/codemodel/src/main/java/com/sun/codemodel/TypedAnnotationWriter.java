@@ -88,7 +88,8 @@ class TypedAnnotationWriter<A extends Annotation,W extends JAnnotationWriter<A>>
         return annotation;
     }
 
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    @SuppressWarnings("unchecked")
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
         if(method.getDeclaringClass()==JAnnotationWriter.class) {
             try {
@@ -163,7 +164,8 @@ class TypedAnnotationWriter<A extends Annotation,W extends JAnnotationWriter<A>>
         throw new IllegalArgumentException("Unable to handle this method call "+method.toString());
     }
 
-    private Object addArrayValue(Object proxy,String name, Class itemType, Class expectedReturnType, Object arg) {
+    @SuppressWarnings("unchecked")
+	private Object addArrayValue(Object proxy,String name, Class itemType, Class expectedReturnType, Object arg) {
         if(arrays==null)
             arrays = new HashMap<String,JAnnotationArrayMember>();
         JAnnotationArrayMember m = arrays.get(name);
@@ -213,7 +215,7 @@ class TypedAnnotationWriter<A extends Annotation,W extends JAnnotationWriter<A>>
      * Check if the type of the argument matches our expectation.
      * If not, report an error.
      */
-    private void checkType(Class actual, Class expected) {
+    private void checkType(Class<?> actual, Class<?> expected) {
         if(expected==actual || expected.isAssignableFrom(actual))
             return; // no problem
 
@@ -226,7 +228,8 @@ class TypedAnnotationWriter<A extends Annotation,W extends JAnnotationWriter<A>>
     /**
      * Creates a proxy and returns it.
      */
-    private W createProxy() {
+    @SuppressWarnings("unchecked")
+	private W createProxy() {
         return (W)Proxy.newProxyInstance(
             writerType.getClassLoader(),new Class[]{writerType},this);
     }
@@ -234,7 +237,8 @@ class TypedAnnotationWriter<A extends Annotation,W extends JAnnotationWriter<A>>
     /**
      * Creates a new typed annotation writer.
      */
-    static <W extends JAnnotationWriter<?>> W create(Class<W> w, JAnnotatable annotatable) {
+    @SuppressWarnings("unchecked")
+	static <W extends JAnnotationWriter<?>> W create(Class<W> w, JAnnotatable annotatable) {
         Class<? extends Annotation> a = findAnnotationType(w);
         return (W)new TypedAnnotationWriter(a,w,annotatable.annotate(a)).createProxy();
     }

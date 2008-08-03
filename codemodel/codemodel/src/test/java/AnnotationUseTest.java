@@ -44,7 +44,6 @@ import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JEnumConstant;
 import com.sun.codemodel.JFieldVar;
-import com.sun.codemodel.JMethod;
 import com.sun.codemodel.JMod;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
 
@@ -62,7 +61,8 @@ public class AnnotationUseTest {
     public static void main(String[] args) throws Exception {
         JCodeModel cm = new JCodeModel();
         JDefinedClass cls = cm._class("Test");
-        JMethod m = cls.method(JMod.PUBLIC,cm.VOID,"foo");
+//        JMethod m = 
+        cls.method(JMod.PUBLIC,cm.VOID,"foo");
 
         // Annotating a class
         //Using the existing Annotations from java.lang.annotation package
@@ -73,6 +73,8 @@ public class AnnotationUseTest {
         JDefinedClass enumcls = cls._enum("Iamenum");
         JEnumConstant ec = enumcls.enumConstant("GOOD");
         JEnumConstant ec1 = enumcls.enumConstant("BAD");
+        JEnumConstant ec2 = enumcls.enumConstant("BAD");
+        ec1.equals(ec2);
 
 
         use.param("value",ec);
