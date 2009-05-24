@@ -35,29 +35,17 @@
 		</mailingList>
 		<mailingList>
 			<name>Issues List</name>
-			<subscribe>
-				issues-subscribe@codemodel.dev.java.net
-			</subscribe>
-			<unsubscribe>
-				issues-unsubscribe@codemodel.dev.java.net
-			</unsubscribe>
+			<subscribe>issues-subscribe@codemodel.dev.java.net</subscribe>
+			<unsubscribe>issues-unsubscribe@codemodel.dev.java.net</unsubscribe>
 			<post>issues@codemodel.dev.java.net</post>
-			<archive>
-				https://codemodel.dev.java.net/servlets/SummarizeList?listName=users
-			</archive>
+			<archive>https://codemodel.dev.java.net/servlets/SummarizeList?listName=users</archive>
 		</mailingList>
 		<mailingList>
 			<name>Commits List</name>
-			<subscribe>
-				commits-subscribe@codemodel.dev.java.net
-			</subscribe>
-			<unsubscribe>
-				commits-unsubscribe@codemodel.dev.java.net
-			</unsubscribe>
+			<subscribe>commits-subscribe@codemodel.dev.java.net</subscribe>
+			<unsubscribe>commits-unsubscribe@codemodel.dev.java.net</unsubscribe>
 			<post>commits@codemodel.dev.java.net</post>
-			<archive>
-				https://codemodel.dev.java.net/servlets/SummarizeList?listName=users
-			</archive>
+			<archive>https://codemodel.dev.java.net/servlets/SummarizeList?listName=users</archive>
 		</mailingList>
 	</mailingLists>
 	<developers>
@@ -93,19 +81,13 @@
 	<licenses>
 		<license>
 			<name>CDDL v1.0 / GPL v2 dual license</name>
-			<url>
-				https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html
-			</url>
+			<url>https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
 	<scm>
-		<connection>
-			scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk
-		</connection>
-		<url>
-			https://codemodel.dev.java.net/source/browse/codemodel/
-		</url>
+		<connection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk/codemodel</connection>
+		<url>https://codemodel.dev.java.net/source/browse/codemodel/trunk/codemodel</url>
 	</scm>
 	<organization>
 		<name>Sun Microsystems</name>
@@ -142,14 +124,15 @@
 		<repository>
 			<uniqueVersion>false</uniqueVersion>
 			<id>java.net-maven2-repository</id>
-			<url>java-net:/maven2-repository/trunk/www/repository/</url>
+			<url>java-net:/maven2-repository/trunk/repository</url>
 		</repository>
+		<snapshotRepository>
+			<id>dev.java.net-snapshots</id>
+			<url>${dev.java.net-snapshots.deploy.url}</url>
+		</snapshotRepository>
 		<site>
 			<id>codemodel-www</id>
 			<url>java-net:/codemodel/trunk/www/</url>
-
-			<!-- this is faster when testing stuff -->
-			<!--url>file:../www</url-->
 		</site>
 	</distributionManagement>
 	<repositories>
