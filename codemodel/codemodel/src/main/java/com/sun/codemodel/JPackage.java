@@ -283,7 +283,7 @@ public final class JPackage implements JDeclaration, JGenerable, JClassContainer
     /**
      * Iterates all resource files in this package.
      */
-    public Iterator propertyFiles() {
+    public Iterator<JResourceFile> propertyFiles() {
         return resources.iterator();
     }
 
@@ -349,9 +349,9 @@ public final class JPackage implements JDeclaration, JGenerable, JClassContainer
      * Checks if a given name is already defined as a class/interface
      */
     public boolean isDefined(String classLocalName) {
-        Iterator itr = classes();
+        Iterator<JDefinedClass> itr = classes();
         while (itr.hasNext()) {
-            if (((JClass)itr.next()).name().equals(classLocalName))
+            if ((itr.next()).name().equals(classLocalName))
                 return true;
         }
 

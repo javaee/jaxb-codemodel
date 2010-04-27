@@ -102,7 +102,7 @@ public class JDocComment extends JCommentPart implements JGenerable {
     /**
      * add an @throws tag to the javadoc
      */
-    public JCommentPart addThrows( Class exception ) {
+    public JCommentPart addThrows( Class<? extends Throwable> exception ) {
         return addThrows( owner.ref(exception) );
     }
     

@@ -68,7 +68,7 @@ public final class JSwitch implements JStatement {
 
     public JExpression test() { return test; }
 
-    public Iterator cases() { return cases.iterator(); }
+    public Iterator<JCase> cases() { return cases.iterator(); }
 
     public JCase _case( JExpression label ) {
         JCase c = new JCase( label );

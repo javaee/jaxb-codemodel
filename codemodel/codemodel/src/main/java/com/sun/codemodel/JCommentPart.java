@@ -80,8 +80,8 @@ public class JCommentPart extends ArrayList<Object> {
             for( Object o : (Object[])value)
                 flattenAppend(o);
         } else
-        if(value instanceof Collection) {
-            for( Object o : (Collection)value)
+        if(value instanceof Collection<?>) {
+            for( Object o : (Collection<?>)value)
                 flattenAppend(o);
         } else
             super.add(value);
@@ -103,7 +103,7 @@ public class JCommentPart extends ArrayList<Object> {
         if(!isEmpty())
             f.p(indent);
 
-        Iterator itr = iterator();
+        Iterator<Object> itr = iterator();
         while(itr.hasNext()) {
             Object o = itr.next();
 

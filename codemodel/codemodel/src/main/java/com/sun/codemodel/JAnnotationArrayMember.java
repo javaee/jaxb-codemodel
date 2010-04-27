@@ -184,7 +184,7 @@ public final class JAnnotationArrayMember extends JAnnotationValue implements JA
      * @return The JAnnotationArrayMember. More elements can be added by calling
      *         the same method multiple times
      */
-    public JAnnotationArrayMember param(final Enum value) {
+    public JAnnotationArrayMember param(final Enum<?> value) {
         JAnnotationValue annotationValue = new JAnnotationValue() {
             public void generate(JFormatter f) {
                 f.t(owner.ref(value.getDeclaringClass())).p('.').p(value.name());
@@ -215,7 +215,7 @@ public final class JAnnotationArrayMember extends JAnnotationValue implements JA
      * @return The JAnnotationArrayMember. More elements can be added by calling
      *         the same method multiple times
      */
-    public JAnnotationArrayMember param(final Class value){
+    public JAnnotationArrayMember param(final Class<?> value){
        JAnnotationValue annotationValue = new JAnnotationStringValue(
     		   new JExpressionImpl() {
       			 public void generate(JFormatter f) {

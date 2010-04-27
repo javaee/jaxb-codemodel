@@ -71,7 +71,7 @@ abstract class JGenerifiableImpl implements JGenerifiable, JDeclaration {
         return v;
     }
 
-    public JTypeVar generify(String name, Class bound) {
+    public JTypeVar generify(String name, Class<?> bound) {
         return generify(name,owner().ref(bound));
     }
 

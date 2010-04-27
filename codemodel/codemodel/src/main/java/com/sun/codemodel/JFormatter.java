@@ -511,12 +511,12 @@ public final class JFormatter {
             for(JClass c : classes) {
                 if(c._package()==javaLang) {
                     // make sure that there's no other class with this name within the same package
-                    Iterator itr = enclosingClass._package().classes();
+                    Iterator<JDefinedClass> itr = enclosingClass._package().classes();
                     while(itr.hasNext()) {
                         // even if this is the only "String" class we use,
                         // if the class called "String" is in the same package,
                         // we still need to import it.
-                        JDefinedClass n = (JDefinedClass)itr.next();
+                        JDefinedClass n = itr.next();
                         if(n.name().equals(c.name()))
                             return true;    //collision
                     }

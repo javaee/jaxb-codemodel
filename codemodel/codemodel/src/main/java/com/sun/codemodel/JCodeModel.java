@@ -94,7 +94,7 @@ public final class JCodeModel {
     private HashMap<String,JPackage> packages = new HashMap<String,JPackage>();
     
     /** All JReferencedClasses are pooled here. */
-    private final HashMap<Class,JReferencedClass> refClasses = new HashMap<Class,JReferencedClass>();
+    private final HashMap<Class<?>,JReferencedClass> refClasses = new HashMap<Class<?>,JReferencedClass>();
 
     
     /** Obtains a reference to the special "null" type. */
@@ -228,7 +228,7 @@ public final class JCodeModel {
         return new JAnonymousClass(baseType);
     }
 
-    public JDefinedClass anonymousClass(Class baseType) {
+    public JDefinedClass anonymousClass(Class<?> baseType) {
         return anonymousClass(ref(baseType));
     }
     
@@ -321,7 +321,7 @@ public final class JCodeModel {
      *
      * @see #_ref(Class) for the version that handles more cases.
      */
-    public JClass ref(Class clazz) {
+    public JClass ref(Class<?> clazz) {
         JReferencedClass jrc = (JReferencedClass)refClasses.get(clazz);
         if (jrc == null) {
             if (clazz.isPrimitive())
@@ -336,7 +336,7 @@ public final class JCodeModel {
         return jrc;
     }
 
-    public JType _ref(Class c) {
+    public JType _ref(Class<?> c) {
         if(c.isPrimitive())
             return JType.parse(this,c.getName());
         else
@@ -533,9 +533,9 @@ public final class JCodeModel {
      * object, which is scoped to JCodeModel.
      */
     private class JReferencedClass extends JClass implements JDeclaration {
-        private final Class _class;
+        private final Class<?> _class;
 
-        JReferencedClass(Class _clazz) {
+        JReferencedClass(Class<?> _clazz) {
             super(JCodeModel.this);
             this._class = _clazz;
             assert !_class.isArray();
@@ -554,7 +554,7 @@ public final class JCodeModel {
         }
 
         public JClass outer() {
-            Class p = _class.getDeclaringClass();
+            Class<?> p = _class.getDeclaringClass();
             if(p==null)     return null;
             return ref(p);
         }
@@ -575,7 +575,7 @@ public final class JCodeModel {
         }
 
         public JClass _extends() {
-            Class sp = _class.getSuperclass();
+            Class<?> sp = _class.getSuperclass();
             if (sp == null) {
                 if(isInterface())
                     return owner().ref(Object.class);
@@ -585,7 +585,7 @@ public final class JCodeModel {
         }
 
         public Iterator<JClass> _implements() {
-            final Class[] interfaces = _class.getInterfaces();
+            final Class<?>[] interfaces = _class.getInterfaces();
             return new Iterator<JClass>() {
                 private int idx = 0;
                 public boolean hasNext() {
@@ -609,7 +609,7 @@ public final class JCodeModel {
         }
 
         public JPrimitiveType getPrimitiveType() {
-            Class v = boxToPrimitive.get(_class);
+            Class<?> v = boxToPrimitive.get(_class);
             if(v!=null)
                 return JType.parse(JCodeModel.this,v.getName());
             else
@@ -638,15 +638,15 @@ public final class JCodeModel {
      * Conversion from primitive type {@link Class} (such as {@link Integer#TYPE}
      * to its boxed type (such as <tt>Integer.class</tt>)
      */
-    public static final Map<Class,Class> primitiveToBox;
+    public static final Map<Class<?>,Class<?>> primitiveToBox;
     /**
      * The reverse look up for {@link #primitiveToBox}
      */
-    public static final Map<Class,Class> boxToPrimitive;
+    public static final Map<Class<?>,Class<?>> boxToPrimitive;
 
     static {
-        Map<Class,Class> m1 = new HashMap<Class,Class>();
-        Map<Class,Class> m2 = new HashMap<Class,Class>();
+        Map<Class<?>,Class<?>> m1 = new HashMap<Class<?>,Class<?>>();
+        Map<Class<?>,Class<?>> m2 = new HashMap<Class<?>,Class<?>>();
 
         m1.put(Boolean.class,Boolean.TYPE);
         m1.put(Byte.class,Byte.TYPE);
@@ -658,7 +658,7 @@ public final class JCodeModel {
         m1.put(Short.class,Short.TYPE);
         m1.put(Void.class,Void.TYPE);
 
-        for (Map.Entry<Class, Class> e : m1.entrySet())
+        for (Map.Entry<Class<?>, Class<?>> e : m1.entrySet())
             m2.put(e.getValue(),e.getKey());
 
         boxToPrimitive = Collections.unmodifiableMap(m1);

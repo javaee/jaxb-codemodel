@@ -43,7 +43,7 @@ package com.sun.codemodel;
  * A type is always either primitive ({@link JPrimitiveType}) or
  * a reference type ({@link JClass}).
  */
-public abstract class JType implements JGenerable, Comparable {
+public abstract class JType implements JGenerable, Comparable<JType> {
 
     /**
      * Obtains a reference to the primitive type object from a type name.
@@ -177,8 +177,8 @@ public abstract class JType implements JGenerable, Comparable {
      * This method is used to sort generated import statments in a
      * conventional way for readability.
      */
-    public int compareTo(Object o) {
-        final String rhs = ((JType)o).fullName();
+    public int compareTo(JType o) {
+        final String rhs = o.fullName();
         boolean p = fullName().startsWith("java");
         boolean q = rhs.startsWith("java");
 

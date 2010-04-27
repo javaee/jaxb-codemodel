@@ -264,7 +264,7 @@ public final class JAnnotationUse extends JAnnotationValue {
      *         be added to it using the same or the overloaded methods.
      *
      */
-    public JAnnotationUse param(String name, final Enum value) {
+    public JAnnotationUse param(String name, final Enum<?> value) {
         addValue(name, new JAnnotationValue() {
                     public void generate(JFormatter f) {
                         f.t(owner().ref(value.getDeclaringClass())).p('.').p(value.name());
@@ -311,7 +311,7 @@ public final class JAnnotationUse extends JAnnotationValue {
       *
       *
       */
-     public JAnnotationUse param(String name, final Class value){
+     public JAnnotationUse param(String name, final Class<?> value){
          addValue(name, new JAnnotationStringValue(
         		 new JExpressionImpl() {
         			 public void generate(JFormatter f) {

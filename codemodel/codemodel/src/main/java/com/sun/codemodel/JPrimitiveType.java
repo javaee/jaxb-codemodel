@@ -53,7 +53,7 @@ public final class JPrimitiveType extends JType {
      */
     private final JClass wrapperClass;
     
-    JPrimitiveType(JCodeModel owner, String typeName, Class wrapper ) {
+    JPrimitiveType(JCodeModel owner, String typeName, Class<?> wrapper ) {
         this.owner = owner;
         this.typeName = typeName;
         this.wrapperClass = owner.ref(wrapper);

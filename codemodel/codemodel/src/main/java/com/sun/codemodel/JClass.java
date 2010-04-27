@@ -181,9 +181,9 @@ public abstract class JClass extends JType
             return true;
         
         if( this.isInterface() ) {
-            Iterator itfs = derived._implements();
+            Iterator<JClass> itfs = derived._implements();
             while( itfs.hasNext() )
-                if( this.isAssignableFrom((JClass)itfs.next()) )
+                if( this.isAssignableFrom(itfs.next()) )
                     return true;
         }
         
@@ -235,7 +235,7 @@ public abstract class JClass extends JType
         return null;
     }
 
-    public final JClass getBaseClass( Class baseType ) {
+    public final JClass getBaseClass( Class<?> baseType ) {
         return getBaseClass(owner().ref(baseType));
     }
 
@@ -254,11 +254,11 @@ public abstract class JClass extends JType
      * <p>
      * <code>.narrow(X)</code> builds <code>Set&lt;X></code> from <code>Set</code>.
      */
-    public JClass narrow( Class clazz ) {
+    public JClass narrow( Class<?> clazz ) {
         return narrow(owner().ref(clazz));
     }
 
-    public JClass narrow( Class... clazz ) {
+    public JClass narrow( Class<?>... clazz ) {
         JClass[] r = new JClass[clazz.length];
         for( int i=0; i<clazz.length; i++ )
             r[i] = owner().ref(clazz[i]);

@@ -275,7 +275,7 @@ public class JDefinedClass
         return this;
     }
 
-    public JDefinedClass _extends(Class superClass) {
+    public JDefinedClass _extends(Class<?> superClass) {
         return _extends(owner().ref(superClass));
     }
 
@@ -301,7 +301,7 @@ public class JDefinedClass
         return this;
     }
 
-    public JDefinedClass _implements(Class iface) {
+    public JDefinedClass _implements(Class<?> iface) {
         return _implements(owner().ref(iface));
     }
 
@@ -392,7 +392,7 @@ public class JDefinedClass
         return field(mods, type, name, null);
     }
 
-    public JFieldVar field(int mods, Class type, String name) {
+    public JFieldVar field(int mods, Class<?> type, String name) {
         return field(mods, owner()._ref(type), name);
     }
 
@@ -487,7 +487,7 @@ public class JDefinedClass
     
     public JFieldVar field(
         int mods,
-        Class type,
+        Class<?> type,
         String name,
         JExpression init) {
         return field(mods, owner()._ref(type), name, init);
@@ -541,7 +541,7 @@ public class JDefinedClass
     /**
      * Returns an iterator that walks the constructors defined in this class.
      */
-    public Iterator constructors() {
+    public Iterator<JMethod> constructors() {
         return constructors.iterator();
     }
 
@@ -581,7 +581,7 @@ public class JDefinedClass
         return m;
     }
 
-    public JMethod method(int mods, Class type, String name) {
+    public JMethod method(int mods, Class<?> type, String name) {
         return method(mods, owner()._ref(type), name);
     }
 
@@ -846,7 +846,7 @@ public class JDefinedClass
     public JTypeVar generify(String name) {
         return generifiable.generify(name);
     }
-    public JTypeVar generify(String name, Class bound) {
+    public JTypeVar generify(String name, Class<?> bound) {
         return generifiable.generify(name, bound);
     }
     public JTypeVar generify(String name, JClass bound) {

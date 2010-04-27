@@ -52,7 +52,7 @@ public interface JGenerifiable {
     /**
      * Adds a new type variable to this declaration with a bound.
      */
-    JTypeVar generify( String name, Class bound );
+    JTypeVar generify( String name, Class<?> bound );
     
     /**
      * Adds a new type variable to this declaration with a bound.

@@ -243,16 +243,16 @@ class TypedAnnotationWriter<A extends Annotation,W extends JAnnotationWriter<A>>
         return (W)new TypedAnnotationWriter(a,w,annotatable.annotate(a)).createProxy();
     }
 
-    private static Class<? extends Annotation> findAnnotationType(Class clazz) {
+    private static Class<? extends Annotation> findAnnotationType(Class<?> clazz) {
         for( Type t : clazz.getGenericInterfaces()) {
             if(t instanceof ParameterizedType) {
                 ParameterizedType p = (ParameterizedType) t;
                 if(p.getRawType()==JAnnotationWriter.class)
                     return (Class<? extends Annotation>)p.getActualTypeArguments()[0];
             }
-            if(t instanceof Class) {
+            if(t instanceof Class<?>) {
                 // recursive search
-                Class<? extends Annotation> r = findAnnotationType((Class)t);
+                Class<? extends Annotation> r = findAnnotationType((Class<?>)t);
                 if(r!=null)     return r;
             }
         }

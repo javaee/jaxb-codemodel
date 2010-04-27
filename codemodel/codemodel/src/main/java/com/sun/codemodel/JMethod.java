@@ -164,7 +164,7 @@ public class JMethod extends JGenerifiableImpl implements JDeclaration, JAnnotat
 		return this;
 	}
 
-	public JMethod _throws(Class exception) {
+	public JMethod _throws(Class<? extends Throwable> exception) {
 		return _throws(outer.owner().ref(exception));
 	}
 
@@ -190,18 +190,18 @@ public class JMethod extends JGenerifiableImpl implements JDeclaration, JAnnotat
 		return param(JMod.NONE, type, name);
 	}
 
-	public JVar param(int mods, Class type, String name) {
+	public JVar param(int mods, Class<?> type, String name) {
 		return param(mods, outer.owner()._ref(type), name);
 	}
 
-	public JVar param(Class type, String name) {
+	public JVar param(Class<?> type, String name) {
 		return param(outer.owner()._ref(type), name);
 	}
 
 	/**
 	 * @see #varParam(JType, String)
 	 */
-	public JVar varParam(Class type, String name) {
+	public JVar varParam(Class<?> type, String name) {
         return varParam(outer.owner()._ref(type),name);
     }
 
