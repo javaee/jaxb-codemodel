@@ -59,6 +59,10 @@ import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.JMod;
 import com.sun.codemodel.JPackage;
 import com.sun.codemodel.JType;
+import com.sun.istack.tools.MaskingClassLoader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
 
 import org.apache.tools.ant.AntClassLoader;
 import org.apache.tools.ant.BuildException;
@@ -80,6 +84,8 @@ public class ACTask extends Task {
      * Used to load additional user-specified classes.
      */
     private final Path classpath;
+
+    private final List<URL> endorsedJars = new ArrayList<URL>();
 
     private final List<Classes> patterns = new ArrayList<Classes>();
 
@@ -112,6 +118,7 @@ public class ACTask extends Task {
         classpath = new Path(null);
     }
 
+    @Override
     public void setProject(Project project) {
         super.setProject(project);
         classpath.setProject(project);
@@ -209,9 +216,33 @@ public class ACTask extends Task {
         patterns.add(c);
     }
 
+    /**
+     * Nested &lt;endorse> elements.
+     */
+    public static class Endorse {
+        URL endorsedJar;
 
+        public void setPath( String jar ) throws MalformedURLException {
+            endorsedJar = new File(jar).toURI().toURL();
+        }
+    }
+
+   /**
+     * List of endorsed jars
+     */
+    public void addConfiguredEndorse( Endorse e ) {
+        endorsedJars.add(e.endorsedJar);
+    }
+
+    @Override
     public void execute() throws BuildException {
-        userLoader = new AntClassLoader(getProject(),classpath);
+        if ((endorsedJars != null) && (!endorsedJars.isEmpty())) {
+            ClassLoader maskedLoader = new MaskingClassLoader(new AntClassLoader(project,classpath), "javax.xml.bind");
+            URL[] jars = new URL[endorsedJars.size()];
+            userLoader = new URLClassLoader(endorsedJars.toArray(jars), maskedLoader);
+        } else {
+            userLoader = new AntClassLoader(project,classpath);
+        }
         try {
             // find clsses to be bound
             for( String path : classpath.list()) {
