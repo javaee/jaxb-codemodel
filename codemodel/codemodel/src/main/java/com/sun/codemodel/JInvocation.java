@@ -150,7 +150,15 @@ public final class JInvocation extends JExpressionImpl implements JStatement {
     public JInvocation arg(String v) {
         return arg(JExpr.lit(v));
     }
-
+    
+	/**
+	 * Returns all arguments of the invocation.
+	 * @return
+	 *      If there's no arguments, an empty array will be returned.
+	 */
+	public JExpression[] listArgs() {
+		return args.toArray(new JExpression[args.size()]);
+	}
 
     public void generate(JFormatter f) {
         if (isConstructor && type.isArray()) {
