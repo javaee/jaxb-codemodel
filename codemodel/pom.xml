@@ -44,6 +44,11 @@
 	</mailingLists>
 	<developers>
 		<developer>
+			<id>lexi</id>
+			<name>Aleksei Valikov</name>
+			<email>valikov@gmx.net</email>
+		</developer>
+		<developer>
 			<id>kohsuke</id>
 			<name>Kohsuke Kawaguchi</name>
 			<email>kohsuke.kawaguchi@sun.com</email>
