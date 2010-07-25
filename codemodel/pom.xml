@@ -90,9 +90,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<developerConnection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk/codemodel/codemodel</developerConnection>
-		<connection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk/codemodel/codemodel</connection>
-		<url>https://codemodel.dev.java.net/source/browse/codemodel/trunk/codemodel/codemodel</url>
+		<developerConnection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk/codemodel</developerConnection>
+		<connection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk/codemodel</connection>
+		<url>https://codemodel.dev.java.net/source/browse/codemodel/trunk/codemodel</url>
 	</scm>
 	<organization>
 		<name>Sun Microsystems</name>
