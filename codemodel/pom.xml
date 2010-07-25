@@ -5,7 +5,7 @@
 	<name>Codemodel</name>
 	<description>Java source code generation library</description>
 	<url>https://codemodel.dev.java.net/</url>
-	<version>2.3</version>
+	<version>2.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -88,9 +88,9 @@
 		</license>
 	</licenses>
 	<scm>
-		<developerConnection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/tags/2.3</developerConnection>
-		<connection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/tags/2.3</connection>
-		<url>https://codemodel.dev.java.net/source/browse/codemodel/tags/2.3</url>
+		<developerConnection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk/codemodel/codemodel</developerConnection>
+		<connection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk/codemodel/codemodel</connection>
+		<url>https://codemodel.dev.java.net/source/browse/codemodel/trunk/codemodel/codemodel</url>
 	</scm>
 	<organization>
 		<name>Sun Microsystems</name>
