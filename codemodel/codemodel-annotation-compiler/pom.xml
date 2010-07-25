@@ -4,6 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sun.codemodel</groupId>
 	<artifactId>codemodel-annotation-compiler</artifactId>
+	<version>2.3-SNAPSHOT</version>
 	<name>Codemodel Annotation Compiler</name>
 	<description>The annotation compiler ant task for the CodeModel java source code generation library</description>
 	<parent>
