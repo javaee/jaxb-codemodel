@@ -42,7 +42,7 @@ package com.sun.codemodel;
  * uses of themselves.
  */
 
-interface JGenerable {
+public interface JGenerable {
 
     public void generate(JFormatter f);
 
