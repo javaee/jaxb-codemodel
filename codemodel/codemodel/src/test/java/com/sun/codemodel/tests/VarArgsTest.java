@@ -37,11 +37,8 @@ package com.sun.codemodel.tests;
 
 import java.io.IOException;
 
-import com.sun.codemodel.JCodeModel;
-import com.sun.codemodel.JDefinedClass;
-import com.sun.codemodel.JMethod;
-import com.sun.codemodel.JMod;
-import com.sun.codemodel.JVar;
+import org.junit.Test;
+
 import com.sun.codemodel.*;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
 
@@ -76,7 +73,8 @@ import com.sun.codemodel.writer.SingleStreamCodeWriter;
 
 public class VarArgsTest {
 
-    public static void main(String[] args)  {
+	@Test
+	public void main() throws Exception {
 
         try {
             JCodeModel cm = new JCodeModel();
