@@ -37,7 +37,13 @@ package com.sun.codemodel.tests;
 
 import java.util.Iterator;
 
-import com.sun.codemodel.*;
+import org.junit.Test;
+
+import com.sun.codemodel.JCodeModel;
+import com.sun.codemodel.JDefinedClass;
+import com.sun.codemodel.JExpr;
+import com.sun.codemodel.JMethod;
+import com.sun.codemodel.JMod;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
 
 /**
@@ -47,7 +53,8 @@ import com.sun.codemodel.writer.SingleStreamCodeWriter;
  */
 public class AnonymousClassTest {
 
-    public static void main(String[] args) throws Exception {
+	@Test
+	public void main() throws Exception {
         JCodeModel cm = new JCodeModel();
         JDefinedClass cls = cm._class("Test");
         JMethod m = cls.method(JMod.PUBLIC,cm.VOID,"foo");
