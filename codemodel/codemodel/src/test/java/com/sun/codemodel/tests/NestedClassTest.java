@@ -1,4 +1,5 @@
 package com.sun.codemodel.tests;
+
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
@@ -35,6 +36,8 @@ package com.sun.codemodel.tests;
  * holder.
  */
 
+import org.junit.Test;
+
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.JDefinedClass;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
@@ -43,12 +46,14 @@ import com.sun.codemodel.writer.SingleStreamCodeWriter;
  * @author Kohsuke Kawaguchi
  */
 public class NestedClassTest {
-    public static void main(String[] args) throws Exception {
-        JCodeModel cm = new JCodeModel();
-        JDefinedClass c = cm._package("foo")._class(0,"Foo");
-        c._extends(cm.ref(Bar.class));
-        cm.build(new SingleStreamCodeWriter(System.out));
-    }
+	@Test
+	public void main() throws Exception {
+		JCodeModel cm = new JCodeModel();
+		JDefinedClass c = cm._package("foo")._class(0, "Foo");
+		c._extends(cm.ref(Bar.class));
+		cm.build(new SingleStreamCodeWriter(System.out));
+	}
 
-    public static class Bar {}
+	public static class Bar {
+	}
 }

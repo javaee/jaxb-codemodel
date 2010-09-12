@@ -1,4 +1,5 @@
 package com.sun.codemodel.tests;
+
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
@@ -35,8 +36,10 @@ package com.sun.codemodel.tests;
  * holder.
  */
 
-import java.lang.annotation.Inherited;
 import java.io.IOException;
+import java.lang.annotation.Inherited;
+
+import org.junit.Test;
 
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
@@ -45,9 +48,10 @@ import com.sun.codemodel.writer.SingleStreamCodeWriter;
  * @author Kohsuke Kawaguchi
  */
 public class PackageAnnotationTest {
-    public static void main(String[] args) throws IOException {
-        JCodeModel cm = new JCodeModel();
-        cm._package("foo").annotate(Inherited.class);
-        cm.build(new SingleStreamCodeWriter(System.out));
-    }
+	@Test
+	public void main() throws IOException {
+		JCodeModel cm = new JCodeModel();
+		cm._package("foo").annotate(Inherited.class);
+		cm.build(new SingleStreamCodeWriter(System.out));
+	}
 }

@@ -37,6 +37,8 @@ package com.sun.codemodel.tests;
 
 import java.io.IOException;
 
+import org.junit.Test;
+
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.writer.SingleStreamCodeWriter;
 
@@ -44,7 +46,9 @@ import com.sun.codemodel.writer.SingleStreamCodeWriter;
  * @author Kohsuke Kawaguchi
  */
 public class PackageJavadocTest {
-    public static void main(String[] args) throws IOException {
+	
+	@Test
+    public void main() throws IOException {
         JCodeModel cm = new JCodeModel();
         cm._package("foo").javadoc().add("String");
         cm.build(new SingleStreamCodeWriter(System.out));
