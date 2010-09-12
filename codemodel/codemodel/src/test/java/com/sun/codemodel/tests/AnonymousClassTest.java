@@ -65,6 +65,6 @@ public class AnonymousClassTest {
         m.body().decl(cm.ref(Object.class),"x",
             JExpr._new(c));
         
-        cm.build(new SingleStreamCodeWriter(System.out));
+//        cm.build(new SingleStreamCodeWriter(System.out));
     }
 }

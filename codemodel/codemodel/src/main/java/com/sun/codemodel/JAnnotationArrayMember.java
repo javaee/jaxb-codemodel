@@ -207,6 +207,18 @@ public final class JAnnotationArrayMember extends JAnnotationValue implements JA
         return this;
     }
     
+    /**
+     * Adds an expression array member to this annotation
+     *
+     * @param value Adds an expression value to the array member
+     * @return The JAnnotationArrayMember. More elements can be added by calling
+     *         the same method multiple times
+     */
+    public JAnnotationArrayMember param(final JExpression value) {
+        JAnnotationValue annotationValue = new JAnnotationStringValue(value);
+        values.add(annotationValue);
+        return this;
+    }
 
     /**
      * Adds a class array member to this annotation
