@@ -2,8 +2,10 @@ package com.sun.codemodel.tests.util;
 
 import java.io.StringWriter;
 
+import com.sun.codemodel.JDeclaration;
 import com.sun.codemodel.JExpression;
 import com.sun.codemodel.JFormatter;
+import com.sun.codemodel.JGenerable;
 
 /**
  * Various utilities for codemodel tests.
@@ -25,11 +27,31 @@ public class CodeModelTestsUtils {
 	 */
 	public static String toString(JExpression expression) {
 		if (expression == null) {
-			throw new IllegalArgumentException("Expression must not be null.");
+			throw new IllegalArgumentException("Generable must not be null.");
 		}
 		final StringWriter stringWriter = new StringWriter();
 		final JFormatter formatter = new JFormatter(stringWriter);
 		expression.generate(formatter);
+		return stringWriter.toString();
+	}
+
+	public static String declare(JDeclaration declaration) {
+		if (declaration == null) {
+			throw new IllegalArgumentException("Declaration must not be null.");
+		}
+		final StringWriter stringWriter = new StringWriter();
+		final JFormatter formatter = new JFormatter(stringWriter);
+		declaration.declare(formatter);
+		return stringWriter.toString();
+	}
+
+	public static String generate(JGenerable generable) {
+		if (generable == null) {
+			throw new IllegalArgumentException("Generable must not be null.");
+		}
+		final StringWriter stringWriter = new StringWriter();
+		final JFormatter formatter = new JFormatter(stringWriter);
+		generable.generate(formatter);
 		return stringWriter.toString();
 	}
 }

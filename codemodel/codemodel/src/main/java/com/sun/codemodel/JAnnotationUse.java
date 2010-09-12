@@ -336,6 +336,23 @@ public final class JAnnotationUse extends JAnnotationValue {
         addValue(name, new JAnnotationStringValue ( clazz.dotclass() ));
         return this;
     }
+    
+    /**
+     * Adds a member value pair to this annotation.
+     * @param name
+     *        The simple name for this annotation
+     *
+     * @param value
+     *        The JExpression which provides the contant value for this annotation
+     * @return
+     *         The JAnnotationUse. More member value pairs can
+     *         be added to it using the same or the overloaded methods.
+     *
+     */
+    public JAnnotationUse param(String name, JExpression value){
+        addValue(name, new JAnnotationStringValue(value));
+        return this;
+    }
 
     /**
      * Adds a member value pair which is of type array to this annotation
