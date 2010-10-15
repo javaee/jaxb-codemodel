@@ -93,7 +93,7 @@ public final class JAnnotationUse extends JAnnotationValue {
         addValue(name, new JAnnotationStringValue(JExpr.lit(value)));
         return this;
     }
-    
+
     /**
      * Adds a member value pair to this annotation
      * @param name
@@ -110,7 +110,7 @@ public final class JAnnotationUse extends JAnnotationValue {
         addValue(name, new JAnnotationStringValue(JExpr.lit(value)));
         return this;
     }
-    
+
     /**
      * Adds a member value pair to this annotation
      * @param name
@@ -127,7 +127,7 @@ public final class JAnnotationUse extends JAnnotationValue {
         addValue(name, new JAnnotationStringValue(JExpr.lit(value)));
         return this;
     }
-    
+
     /**
      * Adds a member value pair to this annotation
      * @param name
@@ -144,7 +144,7 @@ public final class JAnnotationUse extends JAnnotationValue {
         addValue(name, new JAnnotationStringValue(JExpr.lit(value)));
         return this;
     }
-    
+
     /**
      * Adds a member value pair to this annotation
      * @param name
@@ -161,7 +161,7 @@ public final class JAnnotationUse extends JAnnotationValue {
         addValue(name, new JAnnotationStringValue(JExpr.lit(value)));
         return this;
     }
-    
+
     /**
      * Adds a member value pair to this annotation
      * @param name
@@ -178,7 +178,7 @@ public final class JAnnotationUse extends JAnnotationValue {
         addValue(name, new JAnnotationStringValue(JExpr.lit(value)));
         return this;
     }
-    
+
     /**
      * Adds a member value pair to this annotation
      * @param name
@@ -336,7 +336,7 @@ public final class JAnnotationUse extends JAnnotationValue {
         addValue(name, new JAnnotationStringValue ( clazz.dotclass() ));
         return this;
     }
-    
+
     /**
      * Adds a member value pair to this annotation.
      * @param name
