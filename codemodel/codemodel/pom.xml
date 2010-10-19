@@ -43,38 +43,38 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.sun.codemodel</groupId>
-	<artifactId>codemodel</artifactId>
-	<version>2.4-SNAPSHOT</version>
-	<name>Codemodel Core</name>
-	<description>The core functionality of the CodeModel java source code generation library</description>
-	<parent>
-		<groupId>com.sun.codemodel</groupId>
-		<artifactId>codemodel-project</artifactId>
-		<version>2.4-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
-	<build>
-		<!--plugins>
-			<plugin>
-				<groupId>com.sun.wts.tools.ant</groupId>
-				<artifactId>package-rename-task</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<patterns>
-						<com.sun.codemodel>com.sun.codemodel.internal</com.sun.codemodel>
-					</patterns>
-				</configuration>
-			</plugin>
-		</plugins-->
-	</build>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sun.codemodel</groupId>
+    <artifactId>codemodel</artifactId>
+    <version>2.4-SNAPSHOT</version>
+    <name>Codemodel Core</name>
+    <description>The core functionality of the CodeModel java source code generation library</description>
+    <parent>
+        <groupId>com.sun.codemodel</groupId>
+        <artifactId>codemodel-project</artifactId>
+        <version>2.4-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <build>
+        <!--plugins>
+                <plugin>
+                        <groupId>com.sun.wts.tools.ant</groupId>
+                        <artifactId>package-rename-task</artifactId>
+                        <version>1.1</version>
+                        <configuration>
+                                <patterns>
+                                        <com.sun.codemodel>com.sun.codemodel.internal</com.sun.codemodel>
+                                </patterns>
+                        </configuration>
+                </plugin>
+        </plugins-->
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
