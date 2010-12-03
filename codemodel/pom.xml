@@ -173,7 +173,7 @@
     <distributionManagement>
         <site>
             <id>codemodel-www</id>
-            <url>java-net:/codemodel/trunk/www/</url>
+            <url>svn:https://svn.java.net/svn/codemodel~svn/trunk/www</url>
         </site>
     </distributionManagement>
 </project>
