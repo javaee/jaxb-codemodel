@@ -40,15 +40,13 @@
 
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sun.codemodel</groupId>
     <artifactId>codemodel-project</artifactId>
     <name>Codemodel</name>
     <description>Java source code generation library</description>
-    <url>https://codemodel.dev.java.net/</url>
+    <url>http://codemodel.java.net/</url>
     <version>2.4-SNAPSHOT</version>
     <packaging>pom</packaging>
     <parent>
@@ -61,32 +59,32 @@
         <module>codemodel-annotation-compiler</module>
     </modules>
     <issueManagement>
-        <system>CollabNet</system>
-        <url>https://codemodel.dev.java.net/servlets/ProjectIssues</url>
+        <system>JIRA</system>
+        <url>http://java.net/jira/browse/CODEMODEL</url>
     </issueManagement>
     <!-- this is a guess based on the first commit -->
     <inceptionYear>2005</inceptionYear>
     <mailingLists>
         <mailingList>
             <name>Users List</name>
-            <subscribe>users-subscribe@codemodel.dev.java.net</subscribe>
-            <unsubscribe>users-unsubscribe@codemodel.dev.java.net</unsubscribe>
-            <post>users@codemodel.dev.java.net</post>
-            <archive>https://codemodel.dev.java.net/servlets/SummarizeList?listName=users</archive>
+            <subscribe>sympa@codemodel.kenai.com</subscribe>
+            <unsubscribe>sympa@codemodel.kenai.com</unsubscribe>
+            <post>users@codemodel.java.net</post>
+            <archive>http://java.net/projects/codemodel/lists/users/archive</archive>
         </mailingList>
         <mailingList>
             <name>Issues List</name>
-            <subscribe>issues-subscribe@codemodel.dev.java.net</subscribe>
-            <unsubscribe>issues-unsubscribe@codemodel.dev.java.net</unsubscribe>
-            <post>issues@codemodel.dev.java.net</post>
-            <archive>https://codemodel.dev.java.net/servlets/SummarizeList?listName=users</archive>
+            <subscribe>sympa@codemodel.kenai.com</subscribe>
+            <unsubscribe>sympa@codemodel.kenai.com</unsubscribe>
+            <post>issues@codemodel.java.net</post>
+            <archive>http://java.net/projects/codemodel/lists/issues/archive</archive>
         </mailingList>
         <mailingList>
             <name>Commits List</name>
-            <subscribe>commits-subscribe@codemodel.dev.java.net</subscribe>
-            <unsubscribe>commits-unsubscribe@codemodel.dev.java.net</unsubscribe>
-            <post>commits@codemodel.dev.java.net</post>
-            <archive>https://codemodel.dev.java.net/servlets/SummarizeList?listName=users</archive>
+            <subscribe>sympa@codemodel.kenai.com</subscribe>
+            <unsubscribe>sympa@codemodel.kenai.com</unsubscribe>
+            <post>commits@codemodel.java.net</post>
+            <archive>http://java.net/projects/codemodel/lists/commits/archive</archive>
         </mailingList>
     </mailingLists>
     <developers>
@@ -132,14 +130,14 @@
     <licenses>
         <license>
             <name>CDDL v1.1 / GPL v2 dual license</name>
-            <url>https://glassfish.dev.java.net/public/CDDL+GPL_1_1.html</url>
+            <url>https://glassfish.java.net/public/CDDL+GPL_1_1.html</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
     <scm>
-        <developerConnection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk/codemodel</developerConnection>
-        <connection>scm:svn:https://codemodel.dev.java.net/svn/codemodel/trunk/codemodel</connection>
-        <url>https://codemodel.dev.java.net/source/browse/codemodel/trunk/codemodel</url>
+        <developerConnection>scm:svn:https://svn.java.net/svn/codemodel~svn/trunk/codemodel</developerConnection>
+        <connection>scm:svn:https://svn.java.net/svn/codemodel~svn/trunk/codemodel</connection>
+        <url>http://java.net/projects/codemodel/sources/svn/show/trunk</url>
     </scm>
     <organization>
         <name>Oracle</name>
