@@ -58,7 +58,14 @@ class JAnonymousClass extends JDefinedClass {
         this.base = _base;
     }
     
+    @Override
     public String fullName() {
     	return base.fullName();
     }
+    
+    @Override
+    public void generate(JFormatter f) { 
+        f.t(base);
+    }
+    
 }

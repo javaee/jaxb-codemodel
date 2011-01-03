@@ -438,6 +438,10 @@ public final class JFormatter {
             // types in the root package, and types in
             // the same package as the current type
             if(!supressImport(clazz, c)) {
+                if (clazz instanceof JNarrowedClass) {
+                    clazz = clazz.erasure();
+                }
+                
                 p("import").p(clazz.fullName()).p(';').nl();
             }
         }
@@ -454,6 +458,13 @@ public final class JFormatter {
      * @return true if an import statement should be suppressed, false otherwise
      */
     private boolean supressImport(JClass clazz, JClass c) {
+        if (clazz instanceof JNarrowedClass) {
+            clazz = clazz.erasure();
+        }
+        if (clazz instanceof JAnonymousClass) {   
+            clazz = clazz._extends();
+        }
+         
         if(clazz._package().isUnnamed())
             return true;
 
@@ -513,6 +524,9 @@ public final class JFormatter {
                 return true;
 
             for(JClass c : classes) {
+                if (c instanceof JAnonymousClass) {
+                    c = c._extends();
+                } 
                 if(c._package()==javaLang) {
                     // make sure that there's no other class with this name within the same package
                     Iterator<JDefinedClass> itr = enclosingClass._package().classes();

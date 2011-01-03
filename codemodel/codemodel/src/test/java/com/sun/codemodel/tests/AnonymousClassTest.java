@@ -53,18 +53,18 @@ import com.sun.codemodel.writer.SingleStreamCodeWriter;
  */
 public class AnonymousClassTest {
 
-	@Test
-	public void main() throws Exception {
+    @Test
+    public void main() throws Exception {
         JCodeModel cm = new JCodeModel();
         JDefinedClass cls = cm._class("Test");
-        JMethod m = cls.method(JMod.PUBLIC,cm.VOID,"foo");
-        
+        JMethod m = cls.method(JMod.PUBLIC, cm.VOID, "foo");
+
         JDefinedClass c = cm.anonymousClass(cm.ref(Iterator.class));
-        c.method(0,cm.VOID,"bob");
-        c.field(JMod.PRIVATE,cm.DOUBLE,"y");
-        m.body().decl(cm.ref(Object.class),"x",
-            JExpr._new(c));
-        
-//        cm.build(new SingleStreamCodeWriter(System.out));
+        c.method(0, cm.VOID, "bob");
+        c.field(JMod.PRIVATE, cm.DOUBLE, "y");
+        m.body().decl(cm.ref(Object.class), "x",
+                JExpr._new(c));
+
+        cm.build(new SingleStreamCodeWriter(System.out));
     }
 }
