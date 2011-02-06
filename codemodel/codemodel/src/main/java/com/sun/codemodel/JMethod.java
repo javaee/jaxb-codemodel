@@ -173,6 +173,15 @@ public class JMethod extends JGenerifiableImpl implements JDeclaration, JAnnotat
 	}
 
 	/**
+	 * Returns the list of variable of this method.
+	 *
+	 * @return List of parameters of this method. This list is not modifiable.
+	 */
+	public List<JVar> params() {
+		return Collections.<JVar>unmodifiableList(params);
+	}
+	
+	/**
 	 * Add the specified variable to the list of parameters
 	 * for this method signature.
 	 *
