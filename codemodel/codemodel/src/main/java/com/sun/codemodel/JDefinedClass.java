@@ -424,7 +424,8 @@ public class JDefinedClass
 
         if (fields.containsKey(name)) {
             throw new IllegalArgumentException("trying to create the same field twice: "+name);
-            
+        }
+        
         fields.put(name, f);
         return f;
     }
