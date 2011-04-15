@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1997-2011 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -98,6 +98,7 @@ public abstract class CodeWriter {
                 // can't change this signature to Encoder because
                 // we can't have Encoder in method signature
                 private final CharsetEncoder encoder = EncoderFactory.createEncoder(bw.getEncoding());
+                @Override
                 protected boolean requireEscaping(int ch) {
                     // control characters
                     if( ch<0x20 && " \t\r\n".indexOf(ch)==-1 )  return true;

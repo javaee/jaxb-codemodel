@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright 1997-2008 Sun Microsystems, Inc. All rights reserved.
+ * Copyright 1997-2011 Sun Microsystems, Inc. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -37,6 +37,7 @@ package com.sun.codemodel;
 
 
 import java.lang.annotation.Annotation;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -64,6 +65,14 @@ public final class JAnnotationUse extends JAnnotationValue {
         this.clazz = clazz;
     }
 
+    public JClass getAnnotationClass() {
+        return clazz;
+    }
+
+    public Map<String, JAnnotationValue> getAnnotationMembers() {
+        return Collections.unmodifiableMap(memberValues);
+    }
+    
     private JCodeModel owner() {
         return clazz.owner();
     }
@@ -332,8 +341,8 @@ public final class JAnnotationUse extends JAnnotationValue {
      *         be added to it using the same or the overloaded methods.
      */
     public JAnnotationUse param(String name, JType type){
-        JClass clazz = type.boxify();
-        addValue(name, new JAnnotationStringValue ( clazz.dotclass() ));
+        JClass c = type.boxify();
+        addValue(name, new JAnnotationStringValue ( c.dotclass() ));
         return this;
     }
 
