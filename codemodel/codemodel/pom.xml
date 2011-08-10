@@ -2,7 +2,7 @@
 
     DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
-    Copyright (c) 2010 Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2010-2011 Oracle and/or its affiliates. All rights reserved.
 
     The contents of this file are subject to the terms of either the GNU
     General Public License Version 2 only ("GPL") or the Common Development
@@ -53,20 +53,6 @@
         <version>2.5-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <build>
-        <!--plugins>
-                <plugin>
-                        <groupId>com.sun.wts.tools.ant</groupId>
-                        <artifactId>package-rename-task</artifactId>
-                        <version>1.1</version>
-                        <configuration>
-                                <patterns>
-                                        <com.sun.codemodel>com.sun.codemodel.internal</com.sun.codemodel>
-                                </patterns>
-                        </configuration>
-                </plugin>
-        </plugins-->
-    </build>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
