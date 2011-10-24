@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1997-2011 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -66,18 +66,26 @@ public class FileCodeWriter extends CodeWriter {
 
     /** Files that shall be marked as read only. */
     private final Set<File> readonlyFiles = new HashSet<File>();
-    
+
     public FileCodeWriter( File target ) throws IOException {
         this(target,false);
     }
     
+    public FileCodeWriter( File target, String encoding ) throws IOException {
+        this(target,false, encoding);
+    }
+
     public FileCodeWriter( File target, boolean readOnly ) throws IOException {
+        this(target, readOnly, null);
+    }
+
+    public FileCodeWriter( File target, boolean readOnly, String encoding ) throws IOException {
         this.target = target;
         this.readOnly = readOnly;
+        this.encoding = encoding;
         if(!target.exists() || !target.isDirectory())
             throw new IOException(target + ": non-existent directory");
     }
-    
     
     public OutputStream openBinary(JPackage pkg, String fileName) throws IOException {
         return new FileOutputStream(getFile(pkg,fileName));
