@@ -44,20 +44,20 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sun.codemodel</groupId>
     <artifactId>codemodel-annotation-compiler</artifactId>
-    <version>2.5-SNAPSHOT</version>
+    <version>2.5</version>
     <name>Codemodel Annotation Compiler</name>
     <description>The annotation compiler ant task for the CodeModel java source code generation library</description>
     <parent>
         <groupId>com.sun.codemodel</groupId>
         <artifactId>codemodel-project</artifactId>
-        <version>2.5-SNAPSHOT</version>
+        <version>2.5</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <dependencies>
         <dependency>
             <groupId>com.sun.codemodel</groupId>
             <artifactId>codemodel</artifactId>
-            <version>2.5-SNAPSHOT</version>
+            <version>2.5</version>
         </dependency>
         <dependency>
             <groupId>com.sun.istack</groupId>
