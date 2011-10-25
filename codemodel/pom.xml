@@ -147,7 +147,7 @@
     <distributionManagement>
         <site>
             <id>codemodel-www</id>
-            <url>svn:https://svn.java.net/svn/codemodel~svn/trunk/www</url>
+            <url>scm:svn:https://svn.java.net/svn/codemodel~svn/trunk/www</url>
         </site>
     </distributionManagement>
     <organization>
