@@ -94,6 +94,11 @@
             <email>martin.grebac@oracle.com</email>
         </developer>
         <developer>
+            <id>jungicz</id>
+            <name>Lukas Jungmann</name>
+            <email>lukas.jungmann@oracle.com</email>
+        </developer>
+        <developer>
             <id>lexi</id>
             <name>Aleksei Valikov</name>
             <email>valikov@gmx.net</email>
