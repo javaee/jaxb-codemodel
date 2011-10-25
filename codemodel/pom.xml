@@ -147,7 +147,7 @@
     <distributionManagement>
         <site>
             <id>codemodel-www</id>
-            <url>java-net:/codemodel/trunk/www/</url>
+            <url>svn:https://svn.java.net/svn/codemodel~svn/trunk/www</url>
         </site>
     </distributionManagement>
     <organization>
@@ -164,6 +164,11 @@
                     <source>1.5</source>
                     <target>1.5</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>2.3</version>
             </plugin>
         </plugins>
     </build>
