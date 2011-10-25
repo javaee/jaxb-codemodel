@@ -47,7 +47,7 @@
     <name>Codemodel</name>
     <description>Java source code generation library</description>
     <url>http://codemodel.java.net/</url>
-    <version>2.6-SNAPSHOT</version>
+    <version>2.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     <parent>
         <groupId>net.java</groupId>
