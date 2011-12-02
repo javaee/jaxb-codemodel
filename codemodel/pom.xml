@@ -43,142 +43,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sun.codemodel</groupId>
-    <artifactId>codemodel-project</artifactId>
-    <name>Codemodel</name>
-    <description>Java source code generation library</description>
-    <url>http://codemodel.java.net/</url>
+    <artifactId>codemodel</artifactId>
     <version>2.6</version>
-    <packaging>pom</packaging>
+    <name>Codemodel Core</name>
+    <description>The core functionality of the CodeModel java source code generation library</description>
     <parent>
-        <groupId>net.java</groupId>
-        <artifactId>jvnet-parent</artifactId>
-        <version>1</version>
+        <groupId>com.sun.codemodel</groupId>
+        <artifactId>codemodel-project</artifactId>
+        <version>2.6</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
-    <modules>
-        <module>codemodel</module>
-        <module>codemodel-annotation-compiler</module>
-    </modules>
-    <issueManagement>
-        <system>JIRA</system>
-        <url>http://java.net/jira/browse/CODEMODEL</url>
-    </issueManagement>
-    <!-- this is a guess based on the first commit -->
-    <inceptionYear>2005</inceptionYear>
-    <mailingLists>
-        <mailingList>
-            <name>Users List</name>
-            <subscribe>sympa@codemodel.kenai.com</subscribe>
-            <unsubscribe>sympa@codemodel.kenai.com</unsubscribe>
-            <post>users@codemodel.java.net</post>
-            <archive>http://java.net/projects/codemodel/lists/users/archive</archive>
-        </mailingList>
-        <mailingList>
-            <name>Issues List</name>
-            <subscribe>sympa@codemodel.kenai.com</subscribe>
-            <unsubscribe>sympa@codemodel.kenai.com</unsubscribe>
-            <post>issues@codemodel.java.net</post>
-            <archive>http://java.net/projects/codemodel/lists/issues/archive</archive>
-        </mailingList>
-        <mailingList>
-            <name>Commits List</name>
-            <subscribe>sympa@codemodel.kenai.com</subscribe>
-            <unsubscribe>sympa@codemodel.kenai.com</unsubscribe>
-            <post>commits@codemodel.java.net</post>
-            <archive>http://java.net/projects/codemodel/lists/commits/archive</archive>
-        </mailingList>
-    </mailingLists>
-    <developers>
-        <developer>
-            <id>snajper</id>
-            <name>Martin Grebac</name>
-            <email>martin.grebac@oracle.com</email>
-        </developer>
-        <developer>
-            <id>jungicz</id>
-            <name>Lukas Jungmann</name>
-            <email>lukas.jungmann@oracle.com</email>
-        </developer>
-        <developer>
-            <id>lexi</id>
-            <name>Aleksei Valikov</name>
-            <email>valikov@gmx.net</email>
-        </developer>
-        <developer>
-            <id>kohsuke</id>
-            <name>Kohsuke Kawaguchi</name>
-            <email>kohsuke.kawaguchi@sun.com</email>
-        </developer>
-        <developer>
-            <name>Ryan Shoemaker</name>
-            <id>ryans</id>
-            <email>ryan.shoemaker@sun.com</email>
-        </developer>
-        <developer>
-            <name>Bhakti Mehta</name>
-            <id>bhakti</id>
-            <email>bhakti.mehta@sun.com</email>
-        </developer>
-    </developers>
-    <contributors>
-        <contributor>
-            <name>Gregory Kick</name>
-            <email>gk5885@kickstyle.net</email>
-            <organization>KickStyle</organization>
-            <organizationUrl>http://kickstyle.net/</organizationUrl>
-            <timezone>-6</timezone>
-        </contributor>
-        <contributor>
-            <name>Aleksei Valikov</name>
-            <email>valikov@gmx.net</email>
-        </contributor>
-    </contributors>
-    <licenses>
-        <license>
-            <name>CDDL v1.1 / GPL v2 dual license</name>
-            <url>https://glassfish.java.net/public/CDDL+GPL_1_1.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-    <scm>
-        <developerConnection>scm:svn:https://svn.java.net/svn/codemodel~svn/tags/codemodel-project-2.6</developerConnection>
-        <connection>scm:svn:https://svn.java.net/svn/codemodel~svn/tags/codemodel-project-2.6</connection>
-        <url>http://java.net/projects/codemodel/sources/svn/show/tags/codemodel-project-2.6</url>
-    </scm>
-    <distributionManagement>
-        <site>
-            <id>codemodel-www</id>
-            <url>file:../www</url>
-        </site>
-    </distributionManagement>
-    <organization>
-        <name>Oracle</name>
-        <url>http://www.oracle.com/</url>
-    </organization>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>2.3</version>
-            </plugin>
-        </plugins>
-    </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.8</version>
-            </plugin>
-        </plugins>
-    </reporting>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
