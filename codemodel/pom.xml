@@ -144,12 +144,6 @@
         <connection>scm:svn:https://svn.java.net/svn/codemodel~svn/trunk/codemodel</connection>
         <url>http://java.net/projects/codemodel/sources/svn/show/trunk</url>
     </scm>
-    <distributionManagement>
-        <site>
-            <id>codemodel-www</id>
-            <url>file:../www</url>
-        </site>
-    </distributionManagement>
     <organization>
         <name>Oracle</name>
         <url>http://www.oracle.com/</url>
