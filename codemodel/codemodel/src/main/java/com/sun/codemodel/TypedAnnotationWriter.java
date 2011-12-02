@@ -235,7 +235,7 @@ class TypedAnnotationWriter<A extends Annotation,W extends JAnnotationWriter<A>>
     @SuppressWarnings("unchecked")
 	private W createProxy() {
         return (W)Proxy.newProxyInstance(
-            writerType.getClassLoader(),new Class[]{writerType},this);
+            SecureLoader.getClassClassLoader(writerType),new Class[]{writerType},this);
     }
 
     /**

@@ -90,7 +90,7 @@ public final class JStaticJavaFile extends JResourceFile {
     
     public JStaticJavaFile(JPackage _pkg, String className, String _resourceName) {
         this( _pkg, className,
-            JStaticJavaFile.class.getClassLoader().getResource(_resourceName), null );
+            SecureLoader.getClassClassLoader(JStaticJavaFile.class).getResource(_resourceName), null );
     }
     
     public JStaticJavaFile(JPackage _pkg, String _className, URL _source, LineFilter _filter ) {

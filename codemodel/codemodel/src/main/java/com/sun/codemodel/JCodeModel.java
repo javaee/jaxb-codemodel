@@ -369,7 +369,7 @@ public final class JCodeModel {
     public JClass ref(String fullyQualifiedClassName) {
         try {
             // try the context class loader first
-            return ref(Thread.currentThread().getContextClassLoader().loadClass(fullyQualifiedClassName));
+            return ref(SecureLoader.getContextClassLoader().loadClass(fullyQualifiedClassName));
         } catch (ClassNotFoundException e) {
             // fall through
         }

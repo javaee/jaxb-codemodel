@@ -63,7 +63,7 @@ public final class JStaticFile extends JResourceFile {
     }
     
     public JStaticFile(String _resourceName,boolean isResource) {
-        this( JStaticFile.class.getClassLoader(), _resourceName, isResource );
+        this( SecureLoader.getClassClassLoader(JStaticFile.class), _resourceName, isResource );
     }
 
     /**
