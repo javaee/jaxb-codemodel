@@ -60,5 +60,11 @@
             <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.javaparser</groupId>
+            <artifactId>javaparser</artifactId>
+            <version>1.0.8</version>
+            <scope>test</scope>
+        </dependency>		
     </dependencies>
 </project>
